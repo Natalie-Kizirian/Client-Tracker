@@ -8,7 +8,7 @@ function MainHeader({ onCreateNewClient }) {
   return (
     <header className={classes.header}>
       <h1 className={classes.logo}>
-        <img src="../public/logo.png " alt="" />
+        <img src="/logo.png " alt="" />
         {/*  <SiPivotaltracker /> */}
         Client Tracker
       </h1>
