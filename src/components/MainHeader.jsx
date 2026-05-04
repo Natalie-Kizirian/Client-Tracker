@@ -1,6 +1,6 @@
 import { MdPostAdd, MdMessage } from "react-icons/md";
-import { SiPivotaltracker } from "react-icons/si";
-
+/* import { SiPivotaltracker } from "react-icons/si";
+ */
 import { FaPlus } from "react-icons/fa6";
 import classes from "./MainHeader.module.css";
 
@@ -8,7 +8,8 @@ function MainHeader({ onCreateNewClient }) {
   return (
     <header className={classes.header}>
       <h1 className={classes.logo}>
-        <SiPivotaltracker />
+        <img src="../public/logo.png " alt="" />
+        {/*  <SiPivotaltracker /> */}
         Client Tracker
       </h1>
 

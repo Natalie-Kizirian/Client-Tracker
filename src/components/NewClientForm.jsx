@@ -47,7 +47,7 @@ function NewClientForm({ onCancel, onAddClient }) {
   return (
     <form className={classes.form} onSubmit={sumbitHandler}>
       <p>
-        <label htmlFor="client"> Name</label>
+        <label htmlFor="name"> Name</label>
         <input required onChange={nameChangeHandler} type="text" id="name" />
       </p>
       <p>
@@ -64,7 +64,7 @@ function NewClientForm({ onCancel, onAddClient }) {
       </p>
       <input type="date" value={selectedDate} onChange={dateChangeHandler} />
       <p>
-        <label htmlFor="method"> Payment Method</label>
+        <label> Payment Method</label>
         <select onChange={payMethodHandler}>
           <option value="Cash">Cash</option>
           <option value="Card">Card</option>
