@@ -2,7 +2,7 @@ import ClientList from "./ClientList";
 import MainHeader from "./MainHeader";
 import { useState } from "react";
 
-function ClientPage() {
+function ClientPage({ onSelectClient, clients, onAddClient }) {
   const [modalisVisisble, setModalVisible] = useState(false);
 
   function showModalHandler() {
@@ -18,7 +18,10 @@ function ClientPage() {
       <main>
         <ClientList //
           isModalOpen={modalisVisisble}
-          onModalClose={hideModalHandler} //
+          onModalClose={hideModalHandler}
+          onSelectClient={onSelectClient}
+          clients={clients}
+          onAddClient={onAddClient} //
         />
       </main>
     </>

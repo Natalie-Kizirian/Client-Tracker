@@ -1,0 +1,48 @@
+h2 {
+  text-align: center;
+  color: white;
+  margin-bottom: 5px;
+}
+
+.logo {
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: center;
+  color: #ece1fa;
+}
+.header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ece1fa;
+  margin: 2rem;
+  gap: 5rem;
+}
+
+.back {
+  font-size: 2rem;
+  position: absolute;
+  top: 2%;
+  left: 2%;
+}
+.list{
+    background-color: #D3DAC8;
+    border-radius: 10px;
+    margin: 12px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: solid 2px white;
+}
+.list h4{
+    font-weight: 600;
+    background-color: #CAD2BD;
+    padding: 10px;
+    border-radius: 12px;
+    text-align: center;
+}

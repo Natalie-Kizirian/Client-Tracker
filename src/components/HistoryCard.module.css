@@ -1,0 +1,30 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  /* margin: 12px; */
+  padding: 12px;
+  background-color: #bfc9b0;
+  border-radius: 12px;
+  border: solid 2px #b99a52;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+}
+.mainInfo {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  border-bottom: solid 1.5px #9dac85;
+  padding: 6px 0px;
+}
+.mainInfo p {
+  background-color: #cad2bd;
+  border-radius: 4px;
+  padding: 0px 12px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}

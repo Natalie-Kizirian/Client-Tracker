@@ -1,8 +1,8 @@
 import classes from "./ClientInfo.module.css";
 
-function ClientInfo({ name, total }) {
+function ClientInfo({ name, total , onClickClient }) {
   return (
-    <li className={classes.clientCard}>
+    <li className={classes.clientCard} onClick={onClickClient}>
       <p>
         Name: <strong>{name}</strong>
       </p>
