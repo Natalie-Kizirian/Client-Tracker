@@ -1,21 +1,27 @@
 import classes from "./NewClientForm.module.css";
 import { useState } from "react";
-function NewClientForm({ onCancel, onAddClient }) {
+function NewClientForm({ onCancel, onAddClient, defaultData = null }) {
   //States
-  const [enteredName, setEnteredName] = useState("");
-  const [enteredService, setEnteredService] = useState("");
-  const [enteredPrice, setEnteredPrice] = useState(0);
-  const [enteredTips, setEnteredTips] = useState(0);
-  const [selectedPayMethod, setPayMethod] = useState("Cash");
+  const [enteredName, setEnteredName] = useState(defaultData?.name || "");
+  const [enteredService, setEnteredService] = useState(
+    defaultData?.service || "",
+  );
+  const [enteredPrice, setEnteredPrice] = useState(defaultData?.price || "");
+  const [enteredTips, setEnteredTips] = useState(defaultData?.tips || "");
+  const [selectedPayMethod, setPayMethod] = useState(
+    defaultData?.payment || "Cash",
+  );
   // const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split("T")[0]);
+  const [selectedDate, setSelectedDate] = useState(
+    defaultData?.date || new Date().toISOString().split("T")[0],
+  );
 
   // Functions
 
   function sumbitHandler(event) {
     event.preventDefault();
     const clientData = {
-      id: crypto.randomUUID(),
+      id: defaultData?.id || crypto.randomUUID(),
       name: enteredName,
       service: enteredService,
       price: enteredPrice,
@@ -28,24 +34,55 @@ function NewClientForm({ onCancel, onAddClient }) {
     onCancel();
   }
   return (
-    <form className={classes.form} onSubmit={sumbitHandler}>
+    <form
+      className={classes.form}
+      onSubmit={sumbitHandler}
+    >
       <p>
         <label htmlFor="name"> Name</label>
-        <input required onChange={(e) => setEnteredName(e.target.value)} type="text" id="name" />
+        <input
+          required
+          onChange={(e) => setEnteredName(e.target.value)}
+          value={enteredName}
+          type="text"
+          id="name"
+        />
       </p>
       <p>
         <label htmlFor="service"> Service</label>
-        <input onChange={(e) => setEnteredService(e.target.value)} type="text" id="service" />
+        <input
+          onChange={(e) => setEnteredService(e.target.value)}
+          type="text"
+          id="service"
+          value={enteredService}
+          required
+        />
       </p>
       <p>
         <label htmlFor="price"> Price</label>
-        <input onChange={(e) => setEnteredPrice(e.target.value)} type="number" id="price" step="0.01" />
+        <input
+          onChange={(e) => setEnteredPrice(e.target.value)}
+          type="number"
+          id="price"
+          step="0.01"
+          value={enteredPrice}
+        />
       </p>
       <p>
         <label htmlFor="tips"> Tips</label>
-        <input onChange={(e) => setEnteredTips(e.target.value)} type="number" id="tips" step="0.01" />
+        <input
+          onChange={(e) => setEnteredTips(e.target.value)}
+          type="number"
+          id="tips"
+          step="0.01"
+          value={enteredTips}
+        />
       </p>
-      <input type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} />
+      <input
+        type="date"
+        value={selectedDate}
+        onChange={(e) => setSelectedDate(e.target.value)}
+      />
       <p>
         <label> Payment Method</label>
         <select onChange={(e) => setPayMethod(e.target.value)}>
@@ -54,10 +91,17 @@ function NewClientForm({ onCancel, onAddClient }) {
         </select>
       </p>
       <div className={classes.actions}>
-        <button className={classes.cancel} onClick={onCancel} type="button">
+        <button
+          className={classes.cancel}
+          onClick={onCancel}
+          type="button"
+        >
           Cancel
         </button>
-        <button className={classes.addbtn} type="submit">
+        <button
+          className={classes.addbtn}
+          type="submit"
+        >
           Add
         </button>
       </div>

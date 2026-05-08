@@ -11,11 +11,32 @@ function App() {
     /* setClients([clientData , ...clients])*/
   }
 
+  function editClientHandler(updatedClient) {
+    setClients((existingClients) =>
+      existingClients.map((c) =>
+        c.id === updatedClient.id ? updatedClient : c,
+      ),
+    );
+    setSelectedClient(updatedClient);
+  }
+
   return (
     <>
-      {!selectedClient && <ClientPage onSelectClient={setSelectedClient} clients={clients} onAddClient={addClientsHandler} />}
+      {!selectedClient && (
+        <ClientPage
+          onSelectClient={setSelectedClient}
+          clients={clients}
+          onAddClient={addClientsHandler}
+        />
+      )}
 
-      {selectedClient && <ClientHistory client={selectedClient} onCloseClient={() => setSelectedClient(null)} />}
+      {selectedClient && (
+        <ClientHistory
+          client={selectedClient}
+          onCloseClient={() => setSelectedClient(null)}
+          onEditClient={editClientHandler}
+        />
+      )}
     </>
   );
 }
