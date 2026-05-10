@@ -19,7 +19,7 @@ function ClientHistory({ client, onCloseClient, onEditClient }) {
   }
   return (
     <>
-      <IoIosArrowBack
+      <IoIosArrowBack 
         className={classes.back}
         onClick={onCloseClient}
       />
@@ -32,9 +32,11 @@ function ClientHistory({ client, onCloseClient, onEditClient }) {
               hideModalHandler();
             }}
             defaultData={editingClient}
+            isEditing={true}
           />
         </Modal>
       )}
+      
 
       <div className={classes.header}>
         <img

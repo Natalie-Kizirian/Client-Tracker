@@ -16,16 +16,26 @@
 .mainInfo {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+
   border-bottom: solid 1.5px #9dac85;
   padding: 6px 0px;
+  width: 100%;
 }
 .mainInfo p {
   background-color: #cad2bd;
   border-radius: 4px;
-  padding: 0px 12px;
+  padding: 0px 6px;
   font-size: 0.85rem;
   font-weight: 400;
   display: flex;
   align-items: center;
+}
+@media (min-width: 760px) {
+  .mainInfo p {
+    padding: 0px 24px;
+    font-size: 1.25rem;
+  }
+  p {
+    font-size: 1.25rem;
+  }
 }

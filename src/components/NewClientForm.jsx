@@ -1,13 +1,13 @@
 import classes from "./NewClientForm.module.css";
 import { useState } from "react";
-function NewClientForm({ onCancel, onAddClient, defaultData = null }) {
+function NewClientForm({ onCancel, onAddClient, defaultData = null , isEditing }) {
   //States
   const [enteredName, setEnteredName] = useState(defaultData?.name || "");
   const [enteredService, setEnteredService] = useState(
     defaultData?.service || "",
   );
   const [enteredPrice, setEnteredPrice] = useState(defaultData?.price || "");
-  const [enteredTips, setEnteredTips] = useState(defaultData?.tips || "");
+  const [enteredTips, setEnteredTips] = useState(defaultData?.tips || 0);
   const [selectedPayMethod, setPayMethod] = useState(
     defaultData?.payment || "Cash",
   );
@@ -55,7 +55,6 @@ function NewClientForm({ onCancel, onAddClient, defaultData = null }) {
           type="text"
           id="service"
           value={enteredService}
-          required
         />
       </p>
       <p>
@@ -100,9 +99,9 @@ function NewClientForm({ onCancel, onAddClient, defaultData = null }) {
         </button>
         <button
           className={classes.addbtn}
-          type="submit"
+          type="submit" 
         >
-          Add
+          {isEditing ? "Save" : "Add"}
         </button>
       </div>
     </form>

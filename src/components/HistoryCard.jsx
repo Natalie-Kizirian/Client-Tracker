@@ -3,16 +3,14 @@ import { MdModeEditOutline } from "react-icons/md";
 import { CiCalendar } from "react-icons/ci";
 import { useState } from "react";
 
-function HistoryCard({ client , onEditClient }) {
+function HistoryCard({ client, onEditClient }) {
   const [editingClient, setEditingClient] = useState(null);
-
-
 
   return (
     <div className={classes.wrapper}>
       <div className={classes.cardHeader}>
         <p>{client.service}</p>
-        <MdModeEditOutline onClick={() => onEditClient(client)} />
+        <MdModeEditOutline onClick={() => onEditClient(client)}  />
       </div>
       <div className={classes.mainInfo}>
         <p>

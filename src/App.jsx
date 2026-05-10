@@ -13,8 +13,8 @@ function App() {
 
   function editClientHandler(updatedClient) {
     setClients((existingClients) =>
-      existingClients.map((c) =>
-        c.id === updatedClient.id ? updatedClient : c,
+      existingClients.map((client) =>
+        client.id === updatedClient.id ? updatedClient : client,
       ),
     );
     setSelectedClient(updatedClient);
