@@ -1,0 +1,21 @@
+@import "tailwindcss";
+ 
+h1{
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.button-primary{
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #bfc9b0;
+  color: #2a2630;
+  font-weight: 500;
+}
+body{
+  margin: 12px;
+}
