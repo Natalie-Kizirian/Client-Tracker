@@ -3,7 +3,7 @@ import NewVisitForm from "../Forms/NewVisitForm";
 import Modal from "../Modal";
 import { useState } from "react";
 
-function HistoryPage({ client, visits, onAddVisit }) {
+function HistoryPage({ client, visits, onAddVisit, onClose, onDeleteVisit  ,onDeleteClient}) {
   const [modalisVisible, setModalVisible] = useState(false);
 
   function hideModal() {
@@ -16,12 +16,13 @@ function HistoryPage({ client, visits, onAddVisit }) {
   return (
     <>
       <div className="flex justify-between">
-        <button>Back</button>
+        <button onClick={onClose}>Back</button>
         <button onClick={showModal}>Add</button>
       </div>
       <div className="flex gap-8">
         <h3>{client.name}</h3>
         <button>Edit</button>
+        <button onClick={onDeleteClient}>Delete Client</button>
       </div>
       {modalisVisible && (
         <Modal onCloseModal={hideModal}>
@@ -31,7 +32,11 @@ function HistoryPage({ client, visits, onAddVisit }) {
 
       <ul>
         {visits.map((visit) => (
-          <VisitCard visit={visit} key={visit.id} />
+          <VisitCard
+            visit={visit}
+            key={visit.id}
+            onDeleteVisit={() => onDeleteVisit(visit.id)}
+          />
         ))}
       </ul>
     </>

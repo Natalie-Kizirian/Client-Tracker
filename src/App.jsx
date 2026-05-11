@@ -18,6 +18,14 @@ function App() {
       ),
     );
   }
+  function deleteVisitHandler(id) {
+    setVisits((existingVisits) => existingVisits.filter((v) => v.id !== id));
+  }
+
+  function deleteClientHandler(id) {
+    setClients((existingClients) => existingClients.filter((c) => c.id !== id));
+    setSelectedClient(null);
+  }
   return (
     <>
       <h1>Client Tracker</h1>
@@ -33,6 +41,9 @@ function App() {
           client={selectedClient}
           visits={visits}
           onAddVisit={addVisitHandler}
+          onClose={() => setSelectedClient(null)}
+          onDeleteVisit={deleteVisitHandler}
+          onDeleteClient={deleteClientHandler}
         />
       )}
     </>
