@@ -10,10 +10,12 @@ function HistoryPage({
   onClose,
   onDeleteVisit,
   onDeleteClient,
-  onEditVisit
+  onEditVisit,
+  onEditName,
 }) {
   const [modalisVisible, setModalVisible] = useState(false);
   const [editingVisit, setEditingVisit] = useState(null);
+  const [iseditingName, setEditingName] = useState(false);
 
   function hideModal() {
     setModalVisible(false);
@@ -35,8 +37,22 @@ function HistoryPage({
           Add
         </button>
       </div>
+      {iseditingName ? (
+        <input
+          defaultValue={client.name}
+          className="rounded border-2 border-black px-2 "
+          onBlur={(e) => {
+            onEditName(client.id, e.target.value);
+            setEditingName(false);
+          }}
+        />
+      ) : (
+        <h3 className="m-6">{client.name}</h3>
+      )}
+
       <div className="flex gap-8">
-        <h3>{client.name}</h3>
+        {/* <h3>{client.name}</h3> */}
+        <button onClick={() => setEditingName(true)}>Edit Name</button>
         <button onClick={() => onDeleteClient(client.id)}>Delete Client</button>
       </div>
       {modalisVisible && (
@@ -49,7 +65,6 @@ function HistoryPage({
           />
         </Modal>
       )}
-
       <ul>
         {client.visits.map((visit) => (
           <VisitCard

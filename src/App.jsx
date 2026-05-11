@@ -53,6 +53,13 @@ function App() {
     setClients((existingClients) => existingClients.filter((c) => c.id !== id));
     setSelectedClient(null);
   }
+  function editNameHandler(id, newName) {
+    setClients((existingClients) =>
+      existingClients.map((client) =>
+        client.id === id ? { ...client, name: newName } : client,
+      ),
+    );
+  }
 
   return (
     <>
@@ -72,6 +79,7 @@ function App() {
           onDeleteClient={deleteClientHandler}
           client={clients.find((c) => c.id === selectedClient.id)}
           onEditVisit={editVisitHandler}
+          onEditName={editNameHandler}
         />
       )}
     </>
