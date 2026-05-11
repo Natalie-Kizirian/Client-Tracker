@@ -2,7 +2,7 @@ import ClientCard from "../Cards/ClientCard";
 import NewClientForm from "../Forms/NewClientForm";
 import Modal from "../Modal";
 import { useState } from "react";
-function ClientPage({ onAddClient, clients }) {
+function ClientPage({ onAddClient, clients, onSelectClient }) {
   const [modalisVisible, setModalVisible] = useState(false);
 
   function hideModal() {
@@ -27,11 +27,24 @@ function ClientPage({ onAddClient, clients }) {
         </Modal>
       )}
 
-      <ul>
-        {clients.map((client) => (
-          <ClientCard key={client.id} client={client} />
-        ))}
-      </ul>
+      {clients.length > 0 && (
+        <ul>
+          {clients.map((client) => (
+            <ClientCard
+              key={client.id}
+              client={client}
+              onSelectClient={() => onSelectClient(client)}
+            />
+          ))}
+        </ul>
+      )}
+
+      {clients.length === 0 && (
+        <div style={{ textAlign: "center", color: "black" }}>
+          <h3>No clients yet.</h3> <br />
+          <p>Add your first one and start building your client list!</p>
+        </div>
+      )}
     </>
   );
 }
