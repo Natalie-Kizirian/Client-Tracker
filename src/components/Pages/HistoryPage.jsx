@@ -10,8 +10,10 @@ function HistoryPage({
   onClose,
   onDeleteVisit,
   onDeleteClient,
+  onEditVisit
 }) {
   const [modalisVisible, setModalVisible] = useState(false);
+  const [editingVisit, setEditingVisit] = useState(null);
 
   function hideModal() {
     setModalVisible(false);
@@ -24,16 +26,27 @@ function HistoryPage({
     <>
       <div className="flex justify-between">
         <button onClick={onClose}>Back</button>
-        <button onClick={showModal}>Add</button>
+        <button
+          onClick={() => {
+            setEditingVisit(null);
+            showModal();
+          }}
+        >
+          Add
+        </button>
       </div>
       <div className="flex gap-8">
         <h3>{client.name}</h3>
-        <button>Edit</button>
         <button onClick={() => onDeleteClient(client.id)}>Delete Client</button>
       </div>
       {modalisVisible && (
         <Modal onCloseModal={hideModal}>
-          <NewVisitForm closeModal={hideModal} onAddVisit={onAddVisit} />
+          <NewVisitForm
+            closeModal={hideModal}
+            onAddVisit={onAddVisit}
+            onEditVisit={onEditVisit}
+            defaultData={editingVisit}
+          />
         </Modal>
       )}
 
@@ -43,6 +56,10 @@ function HistoryPage({
             visit={visit}
             key={visit.id}
             onDeleteVisit={() => onDeleteVisit(visit.id)}
+            onEditVisit={(visit) => {
+              setEditingVisit(visit);
+              showModal();
+            }}
           />
         ))}
       </ul>

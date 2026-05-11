@@ -4,7 +4,6 @@ import HistoryPage from "./components/Pages/HistoryPage";
 
 function App() {
   const [clients, setClients] = useState([]);
-  // const [visits, setVisits] = useState([]);
   const [selectedClient, setSelectedClient] = useState(null);
 
   function addClientHandler(clientData) {
@@ -19,6 +18,21 @@ function App() {
               ...client,
               visits: [visitData, ...client.visits].sort(
                 (a, b) => new Date(b.date) - new Date(a.date),
+              ),
+            }
+          : client,
+      ),
+    );
+  }
+
+  function editVisitHandler(updatedVisit) {
+    setClients((existingClients) =>
+      existingClients.map((client) =>
+        client.id === selectedClient.id
+          ? {
+              ...client,
+              visits: client.visits.map((v) =>
+                v.id === updatedVisit.id ? updatedVisit : v,
               ),
             }
           : client,
@@ -52,13 +66,12 @@ function App() {
       )}
       {selectedClient && (
         <HistoryPage
-          //client={selectedClient}
-          //visits={client.visits}
           onAddVisit={addVisitHandler}
           onClose={() => setSelectedClient(null)}
           onDeleteVisit={deleteVisitHandler}
           onDeleteClient={deleteClientHandler}
           client={clients.find((c) => c.id === selectedClient.id)}
+          onEditVisit={editVisitHandler}
         />
       )}
     </>
