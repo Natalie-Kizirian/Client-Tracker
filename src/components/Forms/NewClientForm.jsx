@@ -12,13 +12,19 @@ function NewClientForm({ closeModal, onAddClient }) {
     };
     onAddClient(clientData);
     closeModal();
-    console.log(clientData)
+    console.log(clientData);
   }
   return (
     <>
-      <form onSubmit={submitHandler} className="flex flex-col">
-        <label htmlFor="name">Client Name</label>
+      <form
+        className="flex w-full flex-col gap-4 rounded-md"
+        onSubmit={submitHandler}
+      >
+        <label htmlFor="name" className="text-xl font-semibold">
+          Client Name
+        </label>
         <input
+          className="w-full rounded-md border p-1"
           type="text"
           name=""
           id="name"
@@ -26,11 +32,13 @@ function NewClientForm({ closeModal, onAddClient }) {
           required
         />
 
-        <div>
-          <button type="button" onClick={closeModal}>
+        <div className="mt-8 flex justify-end gap-2">
+          <button type="button" onClick={closeModal} className="px-2">
             Cancel
           </button>
-          <button type="submit">Add</button>
+          <button className="button-secondary" type="submit">
+            Add
+          </button>
         </div>
       </form>
     </>

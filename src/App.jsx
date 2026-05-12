@@ -63,25 +63,27 @@ function App() {
 
   return (
     <>
-      <h1>Client Tracker</h1>
-      {!selectedClient && (
-        <ClientPage
-          onAddClient={addClientHandler}
-          clients={clients}
-          onSelectClient={setSelectedClient}
-        />
-      )}
-      {selectedClient && (
-        <HistoryPage
-          onAddVisit={addVisitHandler}
-          onClose={() => setSelectedClient(null)}
-          onDeleteVisit={deleteVisitHandler}
-          onDeleteClient={deleteClientHandler}
-          client={clients.find((c) => c.id === selectedClient.id)}
-          onEditVisit={editVisitHandler}
-          onEditName={editNameHandler}
-        />
-      )}
+      <div className="flex flex-col gap-10 md:m-auto md:w-1/2">
+        <h1 className="text-center">Client Tracker</h1>
+        {!selectedClient && (
+          <ClientPage
+            onAddClient={addClientHandler}
+            clients={clients}
+            onSelectClient={setSelectedClient}
+          />
+        )}
+        {selectedClient && (
+          <HistoryPage
+            onAddVisit={addVisitHandler}
+            onClose={() => setSelectedClient(null)}
+            onDeleteVisit={deleteVisitHandler}
+            onDeleteClient={deleteClientHandler}
+            client={clients.find((c) => c.id === selectedClient.id)}
+            onEditVisit={editVisitHandler}
+            onEditName={editNameHandler}
+          />
+        )}
+      </div>
     </>
   );
 }

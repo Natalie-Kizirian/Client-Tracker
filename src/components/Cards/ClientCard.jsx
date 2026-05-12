@@ -6,7 +6,10 @@ function ClientCard({ client, onSelectClient }) {
 
   return (
     <>
-      <li onClick={onSelectClient}>
+      <li
+        className="cursor-pointer rounded-md border border-[#b99a52] bg-[#BFC9B0] px-2 drop-shadow-lg "
+        onClick={onSelectClient}
+      >
         <h2>Name: {client.name}</h2>
         <p>Total Income: {totalIncome}$</p>
       </li>

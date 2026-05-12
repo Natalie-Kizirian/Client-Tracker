@@ -11,7 +11,7 @@ function ClientPage({ onAddClient, clients, onSelectClient }) {
   return (
     <>
       <div className="flex justify-between">
-        <h3>Clients</h3>
+        <h3 className="text-2xl">Clients</h3>
 
         <button
           className="button-primary"
@@ -28,7 +28,7 @@ function ClientPage({ onAddClient, clients, onSelectClient }) {
       )}
 
       {clients.length > 0 && (
-        <ul>
+        <ul className="flex flex-col gap-2 rounded-lg border border-2 border-white bg-[#D3DAC8] p-4 drop-shadow-lg">
           {clients.map((client) => (
             <ClientCard
               key={client.id}
