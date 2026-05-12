@@ -27,33 +27,45 @@ function HistoryPage({
   return (
     <>
       <div className="flex justify-between">
-        <button onClick={onClose}>Back</button>
+        <button className="cursor-pointer" onClick={onClose}>Back</button>
         <button
           onClick={() => {
             setEditingVisit(null);
             showModal();
           }}
+          className="button-primary"
         >
-          Add
+          Add Appointment
         </button>
       </div>
-      {iseditingName ? (
-        <input
-          defaultValue={client.name}
-          className="rounded border-2 border-black px-2 "
-          onBlur={(e) => {
-            onEditName(client.id, e.target.value);
-            setEditingName(false);
-          }}
-        />
-      ) : (
-        <h3 className="m-6">{client.name}</h3>
-      )}
+      <div className="flex flex-row justify-between border-b-2 border-black">
+        {iseditingName ? (
+          <input
+            defaultValue={client.name}
+            className="rounded border-2 border-black px-2"
+            onBlur={(e) => {
+              onEditName(client.id, e.target.value);
+              setEditingName(false);
+            }}
+          />
+        ) : (
+          <h3 className="text-2xl font-semibold">{client.name}</h3>
+        )}
 
-      <div className="flex gap-8">
-        {/* <h3>{client.name}</h3> */}
-        <button onClick={() => setEditingName(true)}>Edit Name</button>
-        <button onClick={() => onDeleteClient(client.id)}>Delete Client</button>
+        <div className="mb-2 flex justify-end gap-3 md:flex-col">
+          <button
+            className="cursor-pointer rounded-md bg-[#9DAC85] px-2 py-1"
+            onClick={() => setEditingName(true)}
+          >
+            Edit Name
+          </button>
+          <button
+            className="cursor-pointer rounded-md bg-[#9DAC85] px-2 py-1"
+            onClick={() => onDeleteClient(client.id)}
+          >
+            Delete Client{" "}
+          </button>
+        </div>
       </div>
       {modalisVisible && (
         <Modal onCloseModal={hideModal}>
@@ -65,7 +77,7 @@ function HistoryPage({
           />
         </Modal>
       )}
-      <ul>
+      <ul className="flex flex-col gap-5">
         {client.visits.map((visit) => (
           <VisitCard
             visit={visit}

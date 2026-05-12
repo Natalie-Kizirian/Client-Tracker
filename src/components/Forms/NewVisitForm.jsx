@@ -39,51 +39,69 @@ function NewVisitForm({
   }
   return (
     <>
-      <form onSubmit={submitHandler}>
+      <form
+        className="flex flex-col justify-evenly md:m-auto w-full"
+        onSubmit={submitHandler}
+      >
         <label htmlFor="date">Date</label>
         <input
+          className="rounded-md bg-[#D3DAC8] p-1 w-full"
           type="date"
           name=""
           id="date"
           value={enteredDate}
           onChange={(e) => setEnteredDate(e.target.value)}
         />
-        <label htmlFor="service">Service</label>
+        <label className="mt-2" htmlFor="service">
+          Service
+        </label>
         <input
+          className="rounded-md bg-[#D3DAC8] p-1 "
           type="text"
           name=""
           id="service"
           value={enteredService}
           onChange={(e) => setEnteredService(e.target.value)}
         />
-        <label htmlFor="price">Price</label>
+        <label className="mt-2" htmlFor="price">
+          Price
+        </label>
         <input
+          className="rounded-md bg-[#D3DAC8] p-1"
           type="number"
           name=""
           id="price"
           value={enteredPrice}
           onChange={(e) => setEnteredPrice(e.target.value)}
         />
-        <label htmlFor="tips">Tips</label>
+        <label className="mt-2" htmlFor="tips">
+          Tips
+        </label>
         <input
+          className="rounded-md bg-[#D3DAC8] p-1"
           type="number"
           name=""
           id="tips"
           value={enteredTips}
           onChange={(e) => setEnteredTips(e.target.value)}
         />
-        <p>
+        <p className="mt-2 flex flex-col">
           <label> Payment Method</label>
-          <select onChange={(e) => setEnteredPayment(e.target.value)}>
+          <select
+            className="rounded-md bg-[#D3DAC8] p-1"
+            onChange={(e) => setEnteredPayment(e.target.value)}
+          >
             <option value="Cash">Cash</option>
             <option value="Card">Card</option>
           </select>
         </p>
-        <div>
+        <div className="mt-5 flex w-full justify-end gap-4">
           <button type="button" onClick={closeModal}>
             Cancel
           </button>
-          <button type="submit">Add</button>
+          <button className="button-secondary" type="submit">
+            Add
+          </button>
         </div>
       </form>
     </>

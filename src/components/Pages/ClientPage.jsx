@@ -28,7 +28,7 @@ function ClientPage({ onAddClient, clients, onSelectClient }) {
       )}
 
       {clients.length > 0 && (
-        <ul className="flex flex-col gap-2 rounded-lg border border-2 border-white bg-[#D3DAC8] p-4 drop-shadow-lg">
+        <ul className="flex flex-col gap-2 rounded-lg border-2 border-white bg-[#D3DAC8] p-4 drop-shadow-lg">
           {clients.map((client) => (
             <ClientCard
               key={client.id}
