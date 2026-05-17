@@ -24,7 +24,7 @@ function NewClientForm({ closeModal, onAddClient }) {
           Client Name
         </label>
         <input
-          className="w-full rounded-md border p-1"
+          className="w-full rounded-md border p-1 bg-white"
           type="text"
           name=""
           id="name"

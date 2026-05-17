@@ -34,7 +34,7 @@ function VisitCard({ visit, onDeleteVisit, onEditVisit }) {
         </p>
         <p className="rounded-md bg-[#CAD2BD] p-1 lg:px-5">{visit.payment}</p>
       </div>
-      <p className="text-l w-full font-semibold md:text-xl">
+      <p className="text-l w-full font-bold md:text-xl">
         Total {visit.total} €
       </p>{" "}
     </div>

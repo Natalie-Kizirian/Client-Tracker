@@ -1,13 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ClientPage from "./components/Pages/ClientPage";
 import HistoryPage from "./components/Pages/HistoryPage";
 
 function App() {
-  const [clients, setClients] = useState([]);
+  const [clients, setClients] = useState(() => {
+    const saved = localStorage.getItem("clients");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("clients", JSON.stringify(clients));
+  }, [clients]);
   const [selectedClient, setSelectedClient] = useState(null);
 
   function addClientHandler(clientData) {
-    setClients((existingClients) => [clientData, ...existingClients]);
+    setClients((existingClients) => [clientData, ...existingClients].sort((a,b)=>
+    a.name.localeCompare(b.name)));
   }
 
   function addVisitHandler(visitData) {

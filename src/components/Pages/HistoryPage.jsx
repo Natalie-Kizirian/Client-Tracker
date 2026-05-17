@@ -27,7 +27,9 @@ function HistoryPage({
   return (
     <>
       <div className="flex justify-between">
-        <button className="cursor-pointer" onClick={onClose}>Back</button>
+        <button className="cursor-pointer" onClick={onClose}>
+          Back
+        </button>
         <button
           onClick={() => {
             setEditingVisit(null);
@@ -49,18 +51,18 @@ function HistoryPage({
             }}
           />
         ) : (
-          <h3 className="text-2xl font-semibold">{client.name}</h3>
+          <h3 className="text-2xl font-semibold capitalize">{client.name}</h3>
         )}
 
-        <div className="mb-2 flex justify-end gap-3 md:flex-col">
+        <div className="mb-2 flex flex-col justify-end gap-3 sm:flex-row">
           <button
-            className="cursor-pointer rounded-md bg-[#9DAC85] px-2 py-1"
+            className="cursor-pointer rounded-md bg-[#9DAC85] px-2 py-1 drop-shadow-lg"
             onClick={() => setEditingName(true)}
           >
             Edit Name
           </button>
           <button
-            className="cursor-pointer rounded-md bg-[#9DAC85] px-2 py-1"
+            className="cursor-pointer rounded-md bg-[#9DAC85] px-2 py-1 drop-shadow-lg"
             onClick={() => onDeleteClient(client.id)}
           >
             Delete Client{" "}
