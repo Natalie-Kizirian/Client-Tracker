@@ -36,7 +36,7 @@ function VisitCard({ visit, onDeleteVisit, onEditVisit }) {
       </div>
       <p className="text-l w-full font-bold md:text-xl">
         Total {visit.total} €
-      </p>{" "}
+      </p>
     </div>
   );
 }
