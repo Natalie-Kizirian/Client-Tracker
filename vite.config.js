@@ -14,8 +14,8 @@ export default defineConfig({
         name: "Client Tracker",
         short_name: "ClientTracker",
         description: "Track your clients and appointments",
-        theme_color: "#344AB7",
-        background_color: "#EFEFFB",
+        theme_color: "#859271",
+        background_color: "#859271",
         display: "standalone",
         icons: [
           {
