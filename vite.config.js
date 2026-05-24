@@ -7,13 +7,13 @@
 //   plugins: [react(), tailwindcss()],
 // });
 
-
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
+  base: "/Client-Tracker-v2/",
   plugins: [
     react(),
     tailwindcss(),
