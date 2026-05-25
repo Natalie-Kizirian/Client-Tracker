@@ -40,7 +40,7 @@ function HistoryPage({
           Add Appointment
         </button>
       </div>
-      <div className="flex flex-row justify-between border-b-2 border-black">
+      <div className="flex justify-between border-b-2 border-black">
         {iseditingName ? (
           <input
             defaultValue={client.name}

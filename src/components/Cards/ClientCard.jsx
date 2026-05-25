@@ -8,16 +8,13 @@ function ClientCard({ client, onSelectClient }) {
   return (
     <>
       <li
-        className="flex cursor-pointer justify-between rounded-md border border-[#b99a52] bg-[#BFC9B0] px-2 drop-shadow-lg lg:p-3"
+        className="cursor-pointer rounded-md border border-[#b99a52] bg-[#BFC9B0] px-2 drop-shadow-lg lg:p-3"
         onClick={onSelectClient}
       >
-        <div>
-          <h2 className="font-semibold capitalize lg:text-lg">
-            Name: {client.name}
-          </h2>
-          <p className="font-medium lg:text-lg">Total Income: {totalIncome}$</p>
-        </div>
-        <p>Total Appointments: {totalVisits} </p>
+        <h2 className="font-semibold capitalize lg:text-lg">{client.name}</h2>
+        <p className="font-medium lg:text-lg">Total Income: {totalIncome}$</p>
+
+        <p>Appointments: {totalVisits} </p>
       </li>
     </>
   );
