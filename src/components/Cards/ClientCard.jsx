@@ -12,7 +12,7 @@ function ClientCard({ client, onSelectClient }) {
         onClick={onSelectClient}
       >
         <h2 className="font-semibold capitalize lg:text-lg">{client.name}</h2>
-        <p className="font-medium lg:text-lg">Total Income: {totalIncome}$</p>
+        <p className="font-medium lg:text-lg">Total Income: {totalIncome}€</p>
 
         <p>Appointments: {totalVisits} </p>
       </li>

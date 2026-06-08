@@ -27,15 +27,15 @@ function VisitCard({ visit, onDeleteVisit, onEditVisit }) {
           {new Date(visit.date).toLocaleDateString("el-GR")}
         </p>
         <p className="rounded-md bg-[#CAD2BD] p-1 lg:px-5">
-          Price {visit.price} €
+          Price {visit.price}€
         </p>
         <p className="rounded-md bg-[#CAD2BD] p-1 lg:px-5">
-          Tips {visit.tips} €
+          Tips {visit.tips}€
         </p>
         <p className="rounded-md bg-[#CAD2BD] p-1 lg:px-5">{visit.payment}</p>
       </div>
       <p className="text-l w-full font-bold md:text-xl">
-        Total {visit.total} €
+        Total {visit.total}€
       </p>
     </div>
   );
