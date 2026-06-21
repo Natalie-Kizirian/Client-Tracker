@@ -1,6 +1,7 @@
 import VisitCard from "../Cards/VisitCard";
 import NewVisitForm from "../Forms/NewVisitForm";
 import Modal from "../Modal";
+import DeletePopUp from "../DeletePopUp";
 import { useState } from "react";
 
 function HistoryPage({
@@ -92,6 +93,7 @@ function HistoryPage({
           />
         ))}
       </ul>
+      <DeletePopUp/>
     </>
   );
 }
