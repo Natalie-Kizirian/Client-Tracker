@@ -7,7 +7,7 @@ h1{
 body{
   background-color: #859271;
 }
-.button-primary{
+.button-secondary{
   gap: 0.5rem;
   padding: 0.5rem 1rem;
   border: none;
@@ -19,7 +19,7 @@ body{
   color: #2a2630;
   font-weight: 500;
 }
-.button-secondary{
+.button-primary{
     gap: 0.5rem;
   padding: 0.5rem 1rem;
   border: none;

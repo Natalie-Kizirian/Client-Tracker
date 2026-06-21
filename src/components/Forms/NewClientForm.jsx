@@ -36,7 +36,7 @@ function NewClientForm({ closeModal, onAddClient }) {
           <button type="button" onClick={closeModal} className="px-2">
             Cancel
           </button>
-          <button className="button-secondary" type="submit">
+          <button className="button-primary" type="submit">
             Add
           </button>
         </div>

@@ -25,7 +25,7 @@ function ClientPage({ onAddClient, clients, onSelectClient }) {
 
         <div className="flex gap-2">
           <button
-            className="button-primary"
+            className="button-secondary"
             onClick={() => setModalVisible(true)}
           >
             Add New Client

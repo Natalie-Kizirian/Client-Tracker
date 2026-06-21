@@ -40,12 +40,12 @@ function NewVisitForm({
   return (
     <>
       <form
-        className="flex flex-col justify-evenly md:m-auto w-full"
+        className="flex w-full flex-col justify-evenly md:m-auto"
         onSubmit={submitHandler}
       >
         <label htmlFor="date">Date</label>
         <input
-          className="rounded-md bg-[#D3DAC8] p-1 w-full"
+          className="w-full rounded-md bg-[#D3DAC8] p-1"
           type="date"
           name=""
           id="date"
@@ -56,7 +56,7 @@ function NewVisitForm({
           Service
         </label>
         <input
-          className="rounded-md bg-[#D3DAC8] p-1 "
+          className="rounded-md bg-[#D3DAC8] p-1"
           type="text"
           name=""
           id="service"
@@ -99,7 +99,7 @@ function NewVisitForm({
           <button type="button" onClick={closeModal}>
             Cancel
           </button>
-          <button className="button-secondary" type="submit">
+          <button className="button-primary" type="submit">
             Add
           </button>
         </div>

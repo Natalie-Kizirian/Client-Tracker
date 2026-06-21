@@ -11,12 +11,14 @@ function HistoryPage({
   onClose,
   onDeleteVisit,
   onDeleteClient,
+  onPopUpDelete,
   onEditVisit,
   onEditName,
 }) {
   const [modalisVisible, setModalVisible] = useState(false);
   const [editingVisit, setEditingVisit] = useState(null);
   const [iseditingName, setEditingName] = useState(false);
+  const [pendingAction, setPendingAction] = useState(null);
 
   function hideModal() {
     setModalVisible(false);
@@ -25,6 +27,7 @@ function HistoryPage({
   function showModal() {
     setModalVisible(true);
   }
+  function deleteChoice() {}
   return (
     <>
       <div className="flex justify-between">
@@ -36,7 +39,7 @@ function HistoryPage({
             setEditingVisit(null);
             showModal();
           }}
-          className="button-primary"
+          className="button-secondary"
         >
           Add Appointment
         </button>
@@ -64,7 +67,10 @@ function HistoryPage({
           </button>
           <button
             className="cursor-pointer rounded-md bg-[#9DAC85] px-2 py-1 drop-shadow-lg"
-            onClick={() => onDeleteClient(client.id)}
+            // onClick={() => onDeleteClient(client.id)}
+            onClick={() =>
+              setPendingAction(() => () => onDeleteClient(client.id))
+            }
           >
             Delete Client{" "}
           </button>
@@ -85,15 +91,26 @@ function HistoryPage({
           <VisitCard
             visit={visit}
             key={visit.id}
-            onDeleteVisit={() => onDeleteVisit(visit.id)}
+            // onDeleteVisit={() => onDeleteVisit(visit.id)}
+            onDeleteVisit={() =>
+              setPendingAction(() => () => onDeleteVisit(visit.id))
+            }
             onEditVisit={(visit) => {
               setEditingVisit(visit);
               showModal();
             }}
           />
         ))}
+        {pendingAction && (
+          <DeletePopUp
+            onConfirm={() => {
+              pendingAction(); // τρέχει ό,τι action είχε επιλεγεί
+              setPendingAction(null); // κλείνει το popup
+            }}
+            onCancel={() => setPendingAction(null)}
+          />
+        )}
       </ul>
-      <DeletePopUp/>
     </>
   );
 }
