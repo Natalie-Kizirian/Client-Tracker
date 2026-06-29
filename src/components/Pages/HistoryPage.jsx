@@ -55,9 +55,9 @@ function HistoryPage({
             />
           </Modal>
         ) : (
-          <div>
+          <div className="flex flex-col justify-evenly">
             <h3 className="text-2xl font-semibold capitalize">{client.name}</h3>
-            <h3>{client.status}</h3>
+            <h3 className="capitalize">{client.status}</h3>
           </div>
         )}
 

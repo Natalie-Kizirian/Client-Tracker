@@ -3,7 +3,7 @@ import { useState } from "react";
 function NewClientForm({ closeModal, onAddClient, defaultData }) {
   const [enteredName, setEnteredName] = useState(defaultData?.name ?? "");
   const [enteredStatus, setEnteredStatus] = useState(
-    defaultData?.status ?? "New Client",
+    defaultData?.status ?? "new",
   );
 
   function submitHandler(e) {
@@ -41,11 +41,10 @@ function NewClientForm({ closeModal, onAddClient, defaultData }) {
           value={enteredStatus}
           onChange={(e) => setEnteredStatus(e.target.value)}
         >
-          <option value="New">New Client</option>
-          <option value="Active">Active Client</option>
-          <option value="One-time">One-time Client</option>
-          <option value="VIP">VIP Client</option>
-          <option value="Inactive">Inactive Client</option>
+          <option value="new">New Client</option>
+          <option value="active">Active Client</option>
+          <option value="one-time">One-time Client</option>
+          <option value="inactive">Inactive Client</option>
         </select>
 
         <div className="mt-8 flex justify-end gap-2">
