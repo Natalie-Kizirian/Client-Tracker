@@ -6,11 +6,19 @@ import { useState } from "react";
 function ClientPage({ onAddClient, clients = [], onSelectClient }) {
   const [modalisVisible, setModalVisible] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
   const STATUSES = ["all", "new", "active", "one-time", "inactive"];
+
   const filteredClients =
     selectedStatus === "all"
       ? clients
       : clients.filter((s) => s.status === selectedStatus);
+
+  const searchedClients = searchQuery
+    ? filteredClients.filter((c) =>
+        c.name.toLowerCase().includes(searchQuery.toLowerCase()),
+      )
+    : filteredClients;
 
   function hideModal() {
     setModalVisible(false);
@@ -40,18 +48,26 @@ function ClientPage({ onAddClient, clients = [], onSelectClient }) {
         </div>
       </div>
 
-      <div className="flex w-full gap-1">
-        {STATUSES.map((status) => (
-          <p
-            key={status}
-            className={`cursor-pointer rounded-lg border px-1 capitalize ${selectedStatus === status ? "bg-[#9DAC85]" : ""}`}
-            onClick={() =>
-              setSelectedStatus(selectedStatus === status ? "" : status)
-            }
-          >
-            {status}
-          </p>
-        ))}
+      <div className="flex flex-col gap-3">
+        <input
+          type="text"
+          placeholder="Search a client..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="w-full rounded-xl border border-white bg-[#BFC9B0] p-2"
+        />
+
+        <div className="flex w-full justify-between">
+          {STATUSES.map((status) => (
+            <p
+              key={status}
+              className={`cursor-pointer rounded-lg border px-1.5 capitalize ${selectedStatus === status ? "bg-[#9DAC85]" : ""}`}
+              onClick={() => setSelectedStatus(status)}
+            >
+              {status}
+            </p>
+          ))}
+        </div>
       </div>
 
       {modalisVisible && (
@@ -72,13 +88,16 @@ function ClientPage({ onAddClient, clients = [], onSelectClient }) {
           </div>
 
           <ul className="flex flex-col gap-2 rounded-lg border-2 border-white bg-[#D3DAC8] p-4 drop-shadow-lg">
-            {filteredClients.map((client) => (
+            {searchedClients.map((client) => (
               <ClientCard
                 key={client.id}
                 client={client}
                 onSelectClient={() => onSelectClient(client)}
               />
-            ))}
+            ))}{" "}
+            {filteredClients.length === 0 && (
+              <h3 className="text-center">No clients here 👀</h3>
+            )}
           </ul>
         </div>
       )}
