@@ -16,7 +16,7 @@ function ClientPage({ onAddClient, clients = [], onSelectClient }) {
 
   const searchedClients = searchQuery
     ? filteredClients.filter((c) =>
-        c.name.toLowerCase().includes(searchQuery.toLowerCase()),
+        c.name.toLowerCase().startsWith(searchQuery.toLowerCase()),
       )
     : filteredClients;
 
