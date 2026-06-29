@@ -64,7 +64,7 @@ function ClientPage({ onAddClient, clients = [], onSelectClient }) {
         <div>
           <div className="my-2 flex w-full justify-between rounded-lg border border-white bg-[#D3DAC8]">
             <h2 className="text-md w-1/2 text-center font-semibold lg:text-lg">
-              Total Clients <br /> {clients.length}
+              Total Clients <br /> {filteredClients.length}
             </h2>
             <h2 className="text-md w-1/2 text-center font-semibold lg:text-lg">
               Total Income <br /> {totalIncome}€
