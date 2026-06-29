@@ -100,7 +100,7 @@ function NewVisitForm({
             Cancel
           </button>
           <button className="button-primary" type="submit">
-            Add
+            {defaultData ? "Save" : "Add"}
           </button>
         </div>
       </form>

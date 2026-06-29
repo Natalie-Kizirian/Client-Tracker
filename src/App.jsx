@@ -14,8 +14,11 @@ function App() {
   const [selectedClient, setSelectedClient] = useState(null);
 
   function addClientHandler(clientData) {
-    setClients((existingClients) => [clientData, ...existingClients].sort((a,b)=>
-    a.name.localeCompare(b.name)));
+    setClients((existingClients) =>
+      [clientData, ...existingClients].sort((a, b) =>
+        a.name.localeCompare(b.name),
+      ),
+    );
   }
 
   function addVisitHandler(visitData) {
@@ -61,10 +64,11 @@ function App() {
     setClients((existingClients) => existingClients.filter((c) => c.id !== id));
     setSelectedClient(null);
   }
-  function editNameHandler(id, newName) {
-    setClients((existingClients) =>
-      existingClients.map((client) =>
-        client.id === id ? { ...client, name: newName } : client,
+
+  function editClientHandler(updatedClient) {
+    setClients((existing) =>
+      existing.map((c) =>
+        c.id === updatedClient.id ? { ...c, ...updatedClient } : c,
       ),
     );
   }
@@ -88,7 +92,7 @@ function App() {
             onDeleteClient={deleteClientHandler}
             client={clients.find((c) => c.id === selectedClient.id)}
             onEditVisit={editVisitHandler}
-            onEditName={editNameHandler}
+            onEditClient={editClientHandler}
           />
         )}
       </div>

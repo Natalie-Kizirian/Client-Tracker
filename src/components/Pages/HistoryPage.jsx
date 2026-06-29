@@ -2,22 +2,22 @@ import VisitCard from "../Cards/VisitCard";
 import NewVisitForm from "../Forms/NewVisitForm";
 import Modal from "../Modal";
 import DeletePopUp from "../DeletePopUp";
+import ClientCard from "../Cards/ClientCard";
 import { useState } from "react";
+import NewClientForm from "../Forms/NewClientForm";
 
 function HistoryPage({
   client,
-  visits,
   onAddVisit,
   onClose,
   onDeleteVisit,
   onDeleteClient,
-  onPopUpDelete,
   onEditVisit,
-  onEditName,
+  onEditClient,
 }) {
   const [modalisVisible, setModalVisible] = useState(false);
   const [editingVisit, setEditingVisit] = useState(null);
-  const [iseditingName, setEditingName] = useState(false);
+  const [iseditingClient, setEditingClient] = useState(false);
   const [pendingAction, setPendingAction] = useState(null);
 
   function hideModal() {
@@ -45,29 +45,31 @@ function HistoryPage({
         </button>
       </div>
       <div className="flex justify-between border-b-2 border-black">
-        {iseditingName ? (
-          <input
-            defaultValue={client.name}
-            className="rounded border-2 border-black px-2"
-            onBlur={(e) => {
-              onEditName(client.id, e.target.value);
-              setEditingName(false);
-            }}
-          />
+        {/* EDIT CLIENT */}
+        {iseditingClient ? (
+          <Modal onCloseModal={() => setEditingClient(false)}>
+            <NewClientForm
+              defaultData={client}
+              onAddClient={onEditClient}
+              closeModal={() => setEditingClient(false)}
+            />
+          </Modal>
         ) : (
-          <h3 className="text-2xl font-semibold capitalize">{client.name}</h3>
+          <div>
+            <h3 className="text-2xl font-semibold capitalize">{client.name}</h3>
+            <h3>{client.status}</h3>
+          </div>
         )}
 
         <div className="mb-2 flex flex-col justify-end gap-3 sm:flex-row">
           <button
             className="cursor-pointer rounded-md bg-[#9DAC85] px-2 py-1 drop-shadow-lg"
-            onClick={() => setEditingName(true)}
+            onClick={() => setEditingClient(true)}
           >
-            Edit Name
+            Edit Client
           </button>
           <button
             className="cursor-pointer rounded-md bg-[#9DAC85] px-2 py-1 drop-shadow-lg"
-            // onClick={() => onDeleteClient(client.id)}
             onClick={() =>
               setPendingAction(() => () => onDeleteClient(client.id))
             }
@@ -91,7 +93,6 @@ function HistoryPage({
           <VisitCard
             visit={visit}
             key={visit.id}
-            // onDeleteVisit={() => onDeleteVisit(visit.id)}
             onDeleteVisit={() =>
               setPendingAction(() => () => onDeleteVisit(visit.id))
             }
