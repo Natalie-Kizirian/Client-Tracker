@@ -14,6 +14,7 @@ function ClientPage({ onAddClient, clients = [], onSelectClient }) {
       ? clients
       : clients.filter((s) => s.status === selectedStatus);
 
+  // Search Bar
   const searchedClients = searchQuery
     ? filteredClients.filter((c) =>
         c.name.toLowerCase().startsWith(searchQuery.toLowerCase()),
@@ -54,7 +55,7 @@ function ClientPage({ onAddClient, clients = [], onSelectClient }) {
           placeholder="Search a client..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full rounded-xl border border-white bg-[#BFC9B0] p-2"
+          className="w-full rounded-xl border border-white bg-secondary p-2"
         />
 
         <div className="flex w-full justify-between">

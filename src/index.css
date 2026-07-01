@@ -1,15 +1,21 @@
 @import "tailwindcss";
 
-@theme {}
- 
-h1{
+@theme {
+  --color-background: #859271;
+  --color-primary: #9dac85;
+  --color-secondary: #bfc9b0;
+  --color-active: #737e61;
+  --color-light: #d3dac8;
+}
+
+h1 {
   font-size: 1.8rem;
   font-weight: bold;
 }
-body{
+body {
   background-color: #859271;
 }
-.button-secondary{
+.button-secondary {
   gap: 0.5rem;
   padding: 0.5rem 1rem;
   border: none;
@@ -21,19 +27,18 @@ body{
   color: #2a2630;
   font-weight: 500;
 }
-.button-primary{
-    gap: 0.5rem;
+.button-primary {
+  gap: 0.5rem;
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 6px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   font-weight: bold;
-  background-color: #9DAC85;
+  background-color: #9dac85;
   color: #2a2630;
   font-weight: 500;
-
 }
-body{
+body {
   margin: 12px;
 }
