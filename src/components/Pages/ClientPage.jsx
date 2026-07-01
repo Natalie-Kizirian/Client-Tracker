@@ -55,14 +55,14 @@ function ClientPage({ onAddClient, clients = [], onSelectClient }) {
           placeholder="Search a client..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full rounded-xl border border-white bg-secondary p-2"
+          className="bg-secondary w-full rounded-xl border border-white p-2"
         />
 
         <div className="flex w-full justify-between">
           {STATUSES.map((status) => (
             <p
               key={status}
-              className={`cursor-pointer rounded-lg border px-1.5 capitalize ${selectedStatus === status ? "bg-[#9DAC85]" : ""}`}
+              className={`cursor-pointer rounded-lg border px-1.5 capitalize lg:px-5 ${selectedStatus === status ? "bg-[#9DAC85]" : ""}`}
               onClick={() => setSelectedStatus(status)}
             >
               {status}
