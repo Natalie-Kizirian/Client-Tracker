@@ -96,7 +96,7 @@ function NewVisitForm({
           </select>
         </p>
         <div className="mt-5 flex w-full justify-end gap-4">
-          <button type="button" onClick={closeModal}>
+          <button type="button" onClick={closeModal} className="button-secondary">
             Cancel
           </button>
           <button className="button-primary" type="submit">

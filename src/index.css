@@ -6,6 +6,7 @@
   --color-secondary: #bfc9b0;
   --color-active: #737e61;
   --color-light: #d3dac8;
+  --color-black: #11130f;
 }
 
 h1 {
@@ -23,8 +24,8 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   font-weight: bold;
-  background-color: #bfc9b0;
-  color: #2a2630;
+  background-color: #d3dac8;
+  color: #272B21;
   font-weight: 500;
 }
 .button-primary {
@@ -36,7 +37,7 @@ body {
   cursor: pointer;
   font-weight: bold;
   background-color: #9dac85;
-  color: #2a2630;
+  color: #11130f;
   font-weight: 500;
 }
 body {

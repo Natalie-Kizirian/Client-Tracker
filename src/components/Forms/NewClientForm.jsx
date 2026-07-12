@@ -24,7 +24,7 @@ function NewClientForm({ closeModal, onAddClient, defaultData }) {
         className="flex w-full flex-col gap-4 rounded-md"
         onSubmit={submitHandler}
       >
-        <label htmlFor="name" className="text-xl font-semibold">
+        <label htmlFor="name" className="text-xl font-semibold text-black">
           Client Name
         </label>
         <input
@@ -48,7 +48,7 @@ function NewClientForm({ closeModal, onAddClient, defaultData }) {
         </select>
 
         <div className="mt-8 flex justify-end gap-2">
-          <button type="button" onClick={closeModal} className="px-2">
+          <button type="button" onClick={closeModal} className="button-secondary ">
             Cancel
           </button>
           <button className="button-primary" type="submit">

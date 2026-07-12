@@ -7,7 +7,7 @@ function VisitCard({ visit, onDeleteVisit, onEditVisit }) {
   //   setModalVisible(true);
   // }
   return (
-    <div className="flex flex-col gap-1 rounded-xl border-2 border-[#b99a52] bg-[#BFC9B0] p-1 drop-shadow-md md:p-4">
+    <div className="flex flex-col gap-1 rounded-xl border-2  border-[#b99a52] bg-[#BFC9B0] p-1 drop-shadow-md md:p-4">
       <div className="flex w-full">
         <p className="w-full text-lg font-medium">{visit.service}</p>
         <div className="flex gap-4">

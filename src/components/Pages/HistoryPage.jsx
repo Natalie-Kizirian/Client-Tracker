@@ -5,6 +5,7 @@ import DeletePopUp from "../DeletePopUp";
 import ClientCard from "../Cards/ClientCard";
 import { useState } from "react";
 import NewClientForm from "../Forms/NewClientForm";
+import { IoChevronBackOutline } from "react-icons/io5";
 
 function HistoryPage({
   client,
@@ -31,8 +32,8 @@ function HistoryPage({
   return (
     <>
       <div className="flex justify-between">
-        <button className="cursor-pointer" onClick={onClose}>
-          Back
+        <button className="cursor-pointer text-xl" onClick={onClose}>
+          <IoChevronBackOutline />
         </button>
         <button
           onClick={() => {

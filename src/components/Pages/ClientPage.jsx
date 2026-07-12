@@ -2,6 +2,7 @@ import ClientCard from "../Cards/ClientCard";
 import NewClientForm from "../Forms/NewClientForm";
 import Modal from "../Modal";
 import { useState } from "react";
+import { FaArrowUp } from "react-icons/fa";
 
 function ClientPage({ onAddClient, clients = [], onSelectClient }) {
   const [modalisVisible, setModalVisible] = useState(false);
@@ -34,12 +35,18 @@ function ClientPage({ onAddClient, clients = [], onSelectClient }) {
     return sum + clientTotal;
   }, 0);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <>
-      <div className="flex justify-between">
-        <h3 className="text-2xl">Clients</h3>
+      <div className="flex flex-col gap-3">
+        <div className="flex justify-between">
+          <span></span>
 
-        <div className="flex gap-2">
           <button
             className="button-secondary"
             onClick={() => setModalVisible(true)}
@@ -47,9 +54,7 @@ function ClientPage({ onAddClient, clients = [], onSelectClient }) {
             Add New Client
           </button>
         </div>
-      </div>
-
-      <div className="flex flex-col gap-3">
+        {/* SEARCH BAR */}
         <input
           type="text"
           placeholder="Search a client..."
@@ -58,11 +63,12 @@ function ClientPage({ onAddClient, clients = [], onSelectClient }) {
           className="bg-secondary w-full rounded-xl border border-white p-2"
         />
 
+        {/* STATUS FILTERS */}
         <div className="flex w-full justify-between">
           {STATUSES.map((status) => (
             <p
               key={status}
-              className={`cursor-pointer rounded-lg border px-1.5 capitalize lg:px-5 ${selectedStatus === status ? "bg-[#9DAC85]" : ""}`}
+              className={`cursor-pointer rounded-md px-1.5 capitalize lg:px-10 lg:text-lg ${selectedStatus === status ? "bg-secondary font-semibold " : " bg-primary"}`}
               onClick={() => setSelectedStatus(status)}
             >
               {status}
@@ -109,6 +115,12 @@ function ClientPage({ onAddClient, clients = [], onSelectClient }) {
           <p>Add your first one and start building your client list!</p>
         </div>
       )}
+      <button
+        onClick={scrollToTop}
+        className="fixed right-2 bottom-2 cursor-pointer rounded-2xl bg-white/70 p-2 text-xl lg:right-1/6"
+      >
+        <FaArrowUp />
+      </button>
     </>
   );
 }
