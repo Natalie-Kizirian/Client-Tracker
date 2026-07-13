@@ -117,7 +117,7 @@ function ClientPage({ onAddClient, clients = [], onSelectClient }) {
       )}
       <button
         onClick={scrollToTop}
-        className="fixed right-2 bottom-2 cursor-pointer rounded-2xl bg-white/70 p-2 text-xl lg:right-1/6"
+        className="fixed right-4 bottom-4 cursor-pointer rounded-2xl bg-white/70 p-2 text-xl lg:right-1/6"
       >
         <FaArrowUp />
       </button>
