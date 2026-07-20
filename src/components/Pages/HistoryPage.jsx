@@ -58,7 +58,7 @@ function HistoryPage({
         ) : (
           <div className="flex flex-col justify-evenly">
             <h3 className="text-2xl font-semibold capitalize">{client.name}</h3>
-            <h3 className="capitalize">{client.status}</h3>
+            <h3 className="capitalize">{client.status} Client</h3>
           </div>
         )}
 
@@ -112,7 +112,14 @@ function HistoryPage({
             onCancel={() => setPendingAction(null)}
           />
         )}
+        {client.visits.length === 0 && (
+          <div className="cursor-pointer rounded-md border border-[#b99a52] bg-[#BFC9B0] px-2 text-center drop-shadow-lg lg:p-3">
+            <h3>No appointments yet.</h3> <br />
+            <p>Add an appointment to start tracking {client.name}'s visits.</p>
+          </div>
+        )}
       </ul>
+      {/* style={{ textAlign: "center", color: "black" , background:"red"}} */}
     </>
   );
 }

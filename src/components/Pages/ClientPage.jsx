@@ -110,7 +110,7 @@ function ClientPage({ onAddClient, clients = [], onSelectClient }) {
       )}
 
       {clients.length === 0 && (
-        <div style={{ textAlign: "center", color: "black" }}>
+        <div className="cursor-pointer rounded-md border border-[#b99a52] bg-[#BFC9B0] px-2 text-center drop-shadow-lg lg:p-3">
           <h3>No clients yet.</h3> <br />
           <p>Add your first one and start building your client list!</p>
         </div>
