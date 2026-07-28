@@ -42,7 +42,7 @@ function HistoryPage({
           }}
           className="button-secondary"
         >
-          Add Appointment
+         + Add Appointment
         </button>
       </div>
       <div className="flex justify-between border-b-2 border-black">

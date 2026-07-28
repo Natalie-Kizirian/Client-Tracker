@@ -7,6 +7,7 @@
   --color-active: #737e61;
   --color-light: #d3dac8;
   --color-black: #11130f;
+  --shadow-inset-black: inset 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 h1 {
@@ -25,7 +26,7 @@ body {
   cursor: pointer;
   font-weight: bold;
   background-color: #d3dac8;
-  color: #272B21;
+  color: #272b21;
   font-weight: 500;
 }
 .button-primary {

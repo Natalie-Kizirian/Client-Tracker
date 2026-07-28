@@ -48,10 +48,10 @@ function ClientPage({ onAddClient, clients = [], onSelectClient }) {
           <span></span>
 
           <button
-            className="button-secondary"
+            className="button-secondary text-center"
             onClick={() => setModalVisible(true)}
           >
-            Add New Client
+           + Add New Client
           </button>
         </div>
         {/* SEARCH BAR */}
