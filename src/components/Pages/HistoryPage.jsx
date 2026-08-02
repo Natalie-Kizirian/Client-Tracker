@@ -28,7 +28,7 @@ function HistoryPage({
   function showModal() {
     setModalVisible(true);
   }
-  function deleteChoice() {}
+
   return (
     <>
       <div className="flex justify-between">
@@ -42,7 +42,7 @@ function HistoryPage({
           }}
           className="button-secondary"
         >
-         + Add Appointment
+          + Add Appointment
         </button>
       </div>
       <div className="flex justify-between border-b-2 border-black">
@@ -56,9 +56,10 @@ function HistoryPage({
             />
           </Modal>
         ) : (
-          <div className="flex flex-col justify-evenly">
+          <div className="flex w-1/2 flex-col justify-evenly">
             <h3 className="text-2xl font-semibold capitalize">{client.name}</h3>
-            <h3 className="capitalize">{client.status} Client</h3>
+            <p className="wrap-break-word capitalize">{client.note}</p>
+            {/* <h3 className="capitalize">{client.status} Client</h3> */}
           </div>
         )}
 
