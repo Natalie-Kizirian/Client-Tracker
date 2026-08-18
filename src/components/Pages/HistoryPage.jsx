@@ -78,12 +78,12 @@ function HistoryPage({
                   <h3 className="capitalize">{client.status} Client</h3>
                 </div>
 
-                {client.note === "" ? (
-                  ""
-                ) : (
+                {client.note ? (
                   <p className="bg-surface/60 rounded-lg p-2 wrap-break-word capitalize">
                     {client.note}
                   </p>
+                ) : (
+                  ""
                 )}
               </div>
             )}

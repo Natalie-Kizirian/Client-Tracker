@@ -50,7 +50,7 @@ function NewClientForm({
             value={enteredStatus}
             onChange={(e) => setEnteredStatus(e.target.value)}
           >
-            {/* <option value="new">New Client</option> */}
+            <option value="new">New Client</option>
             <option value="active">Active Client</option>
             <option value="one-time">One-time Client</option>
             <option value="inactive">Inactive Client</option>
