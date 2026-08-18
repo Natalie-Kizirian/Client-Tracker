@@ -2,10 +2,10 @@ import VisitCard from "../Cards/VisitCard";
 import NewVisitForm from "../Forms/NewVisitForm";
 import Modal from "../Modal";
 import DeletePopUp from "../DeletePopUp";
-import ClientCard from "../Cards/ClientCard";
 import { useState } from "react";
 import NewClientForm from "../Forms/NewClientForm";
 import { IoChevronBackOutline } from "react-icons/io5";
+import { getClientTotalIncome } from "../../utils";
 
 function HistoryPage({
   client,
@@ -28,6 +28,7 @@ function HistoryPage({
   function showModal() {
     setModalVisible(true);
   }
+  const totalIncome = getClientTotalIncome(client);
 
   return (
     <>
@@ -45,41 +46,51 @@ function HistoryPage({
           + Add Appointment
         </button>
       </div>
-      <div className="flex justify-between border-b-2 border-black">
-        {/* EDIT CLIENT */}
-        {iseditingClient ? (
-          <Modal onCloseModal={() => setEditingClient(false)}>
-            <NewClientForm
-              defaultData={client}
-              onAddClient={onEditClient}
-              closeModal={() => setEditingClient(false)}
-            />
-          </Modal>
-        ) : (
-          <div className="flex w-1/2 flex-col justify-evenly">
+      <div className="flex flex-col justify-between border-b-2 border-black">
+        <div className="mb-2 flex flex-col justify-between gap-2">
+          {/* 1st row */}
+          <div className="flex justify-between">
             <h3 className="text-2xl font-semibold capitalize">{client.name}</h3>
-            <p className="wrap-break-word capitalize">{client.note}</p>
-            {/* <h3 className="capitalize">{client.status} Client</h3> */}
+            <button
+              className="bg-primary cursor-pointer rounded-md px-2 py-1 drop-shadow-lg"
+              onClick={() => setEditingClient(true)}
+            >
+              Edit Client
+            </button>{" "}
           </div>
-        )}
 
-        <div className="mb-2 flex flex-col justify-end gap-3 sm:flex-row">
-          <button
-            className="cursor-pointer rounded-md bg-[#9DAC85] px-2 py-1 drop-shadow-lg"
-            onClick={() => setEditingClient(true)}
-          >
-            Edit Client
-          </button>
-          <button
-            className="cursor-pointer rounded-md bg-[#9DAC85] px-2 py-1 drop-shadow-lg"
-            onClick={() =>
-              setPendingAction(() => () => onDeleteClient(client.id))
-            }
-          >
-            Delete Client{" "}
-          </button>
+          <div>
+            {iseditingClient ? (
+              <Modal onCloseModal={() => setEditingClient(false)}>
+                <NewClientForm
+                  defaultData={client}
+                  onAddClient={onEditClient}
+                  closeModal={() => setEditingClient(false)}
+                  onDeleteClient={() =>
+                    setPendingAction(() => () => onDeleteClient(client.id))
+                  }
+                />
+              </Modal>
+            ) : (
+              <div className="flex flex-col gap-3">
+                <div className="flex justify-between">
+                  <p>Total Income: {totalIncome}</p>
+                  <h3 className="capitalize">{client.status} Client</h3>
+                </div>
+
+                {client.note === "" ? (
+                  ""
+                ) : (
+                  <p className="bg-surface/60 rounded-lg p-2 wrap-break-word capitalize">
+                    {client.note}
+                  </p>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       </div>
+
       {modalisVisible && (
         <Modal onCloseModal={hideModal}>
           <NewVisitForm
@@ -87,10 +98,13 @@ function HistoryPage({
             onAddVisit={onAddVisit}
             onEditVisit={onEditVisit}
             defaultData={editingVisit}
+            onDeleteClient={() =>
+              setPendingAction(() => onDeleteClient(client.id))
+            }
           />
         </Modal>
       )}
-      <ul className="flex flex-col gap-5">
+      <ul className="flex flex-col gap-2">
         {client.visits.map((visit) => (
           <VisitCard
             visit={visit}
@@ -114,7 +128,7 @@ function HistoryPage({
           />
         )}
         {client.visits.length === 0 && (
-          <div className="cursor-pointer rounded-md border border-[#b99a52] bg-[#BFC9B0] px-2 text-center drop-shadow-lg lg:p-3">
+          <div className="border-gold bg-body cursor-pointer rounded-md border px-2 text-center drop-shadow-lg lg:p-3">
             <h3>No appointments yet.</h3> <br />
             <p>Add an appointment to start tracking {client.name}'s visits.</p>
           </div>

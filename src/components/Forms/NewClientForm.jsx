@@ -1,6 +1,11 @@
 import { useState } from "react";
 
-function NewClientForm({ closeModal, onAddClient, defaultData }) {
+function NewClientForm({
+  closeModal,
+  onAddClient,
+  defaultData,
+  onDeleteClient,
+}) {
   const [enteredName, setEnteredName] = useState(defaultData?.name ?? "");
   const [enteredStatus, setEnteredStatus] = useState(
     defaultData?.status ?? "new",
@@ -38,7 +43,7 @@ function NewClientForm({ closeModal, onAddClient, defaultData }) {
           required
         />
 
-        <div className="flex flex-col justify-between gap-2 md:gap-4">
+        <div className="flex flex-col justify-between gap-3 md:gap-4">
           <select
             className="bg-surface w-full rounded-lg border border-white p-2"
             name="status"
@@ -59,6 +64,17 @@ function NewClientForm({ closeModal, onAddClient, defaultData }) {
             value={enteredNote}
             onChange={(e) => setNote(e.target.value)}
           />
+          {defaultData ? (
+            <button
+              type="button"
+              className="text-muted text-end"
+              onClick={onDeleteClient}
+            >
+              Delete Client
+            </button>
+          ) : (
+            ""
+          )}
         </div>
 
         <div className="mt-8 flex justify-end gap-2">

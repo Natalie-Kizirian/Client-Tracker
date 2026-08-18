@@ -1,14 +1,12 @@
+import { getClientTotalIncome } from "../../utils";
 function ClientCard({ client, onSelectClient }) {
-  const totalIncome = client.visits.reduce(
-    (sum, visit) => sum + visit.total,
-    0,
-  );
+  const totalIncome = getClientTotalIncome(client);
 
   const totalVisits = client.visits.length;
   return (
     <>
       <li
-        className="cursor-pointer rounded-md border border-[#b99a52] bg-body px-2 drop-shadow-lg lg:p-3 active:bg-primary"
+        className="border-gold bg-body active:bg-primary cursor-pointer rounded-md border px-2 drop-shadow-lg lg:p-3"
         onClick={onSelectClient}
       >
         <h2 className="font-semibold capitalize lg:text-lg">{client.name}</h2>

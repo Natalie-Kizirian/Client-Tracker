@@ -29,7 +29,7 @@ function VisitCard({ visit, onDeleteVisit, onEditVisit }) {
         {...handlers}
         onClick={handleCardClick}
         // onClick={() => onEditVisit(visit)}
-        className={`flex cursor-pointer flex-col gap-1 rounded-xl border-2 border-[#b99a52] bg-[#BFC9B0] p-1 drop-shadow-md md:p-4 ${
+        className={`flex cursor-pointer flex-col gap-1 rounded-xl border-2 border-gold bg-[#BFC9B0] p-1 drop-shadow-md md:p-4 ${
           isRevealed ? "-translate-x-20 " : "translate-x-0 "
         }`}
       >

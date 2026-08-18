@@ -3,6 +3,7 @@ import NewClientForm from "../Forms/NewClientForm";
 import Modal from "../Modal";
 import { useState } from "react";
 import { FaArrowUp } from "react-icons/fa";
+import { getClientTotalIncome } from "../../utils";
 
 function ClientPage({ onAddClient, clients = [], onSelectClient }) {
   const [modalisVisible, setModalVisible] = useState(false);
@@ -27,13 +28,10 @@ function ClientPage({ onAddClient, clients = [], onSelectClient }) {
   }
 
   /* Total Income */
-  const totalIncome = clients.reduce((sum, client) => {
-    const clientTotal = client.visits.reduce(
-      (s, visit) => s + Number(visit.total),
-      0,
-    );
-    return sum + clientTotal;
-  }, 0);
+  const totalIncome = filteredClients.reduce(
+    (sum, client) => sum + getClientTotalIncome(client),
+    0,
+  );
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -67,7 +65,7 @@ function ClientPage({ onAddClient, clients = [], onSelectClient }) {
           {STATUSES.map((status) => (
             <p
               key={status}
-              className={`flex-1 cursor-pointer rounded-md p-1.5 text-center text-sm whitespace-nowrap capitalize lg:text-lg ${selectedStatus === status ? "bg-surface font-semibold " : " bg-primary"}`}
+              className={`border-gold flex-1 cursor-pointer rounded-md border p-1.5 text-center text-sm whitespace-nowrap capitalize lg:text-lg ${selectedStatus === status ? "bg-surface font-semibold " : " bg-primary"}`}
               onClick={() => setSelectedStatus(status)}
             >
               {status} (
@@ -87,12 +85,13 @@ function ClientPage({ onAddClient, clients = [], onSelectClient }) {
         </Modal>
       )}
 
+      {/* Total Income and Cards */}
       {clients.length > 0 && (
-        <div>
-          <div className="bg-surface mb-2 flex w-full items-center justify-between rounded-lg border border-white p-3">
-            <h2 className="font-semibold lg:text-lg">
+        <div className="flex flex-col gap-2">
+          <div className="bg-surface rounded-lg border border-white p-2">
+            {/* <h2 className="font-semibold lg:text-lg">
               Total Clients: {filteredClients.length}
-            </h2>
+            </h2> */}
             <h2 className="font-semibold lg:text-lg">
               Total Income: {totalIncome}€
             </h2>
@@ -114,11 +113,13 @@ function ClientPage({ onAddClient, clients = [], onSelectClient }) {
       )}
 
       {clients.length === 0 && (
-        <div className="cursor-pointer rounded-md border border-[#b99a52] bg-[#BFC9B0] px-2 text-center drop-shadow-lg lg:p-3">
+        <div className="border-gold bg-body cursor-pointer rounded-md border px-2 text-center drop-shadow-lg lg:p-3">
           <h3>No clients yet.</h3> <br />
           <p>Add your first one and start building your client list!</p>
         </div>
       )}
+
+      {/* Button to Top */}
       <button
         onClick={scrollToTop}
         className="fixed right-4 bottom-4 cursor-pointer rounded-2xl bg-white/70 p-2 text-xl lg:right-1/6"
