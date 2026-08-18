@@ -8,7 +8,7 @@ function ClientCard({ client, onSelectClient }) {
   return (
     <>
       <li
-        className="cursor-pointer rounded-md border border-[#b99a52] bg-[#BFC9B0] px-2 drop-shadow-lg lg:p-3"
+        className="cursor-pointer rounded-md border border-[#b99a52] bg-body px-2 drop-shadow-lg lg:p-3 active:bg-primary"
         onClick={onSelectClient}
       >
         <h2 className="font-semibold capitalize lg:text-lg">{client.name}</h2>

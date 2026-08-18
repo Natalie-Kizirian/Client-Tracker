@@ -38,14 +38,14 @@ function NewClientForm({ closeModal, onAddClient, defaultData }) {
           required
         />
 
-        <div className="flex flex-col justify-between gap-2 md:flex-row md:gap-4">
+        <div className="flex flex-col justify-between gap-2 md:gap-4">
           <select
-            className="bg-light w-full rounded-lg border border-white p-2"
+            className="bg-surface w-full rounded-lg border border-white p-2"
             name="status"
             value={enteredStatus}
             onChange={(e) => setEnteredStatus(e.target.value)}
           >
-            <option value="new">New Client</option>
+            {/* <option value="new">New Client</option> */}
             <option value="active">Active Client</option>
             <option value="one-time">One-time Client</option>
             <option value="inactive">Inactive Client</option>
@@ -55,7 +55,7 @@ function NewClientForm({ closeModal, onAddClient, defaultData }) {
             type="text"
             maxLength={75}
             placeholder="Add a note"
-            className="bg-light w-full rounded-lg border border-white p-2 outline-none"
+            className="bg-surface w-full rounded-lg border border-white p-2 outline-none"
             value={enteredNote}
             onChange={(e) => setNote(e.target.value)}
           />

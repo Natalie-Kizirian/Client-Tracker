@@ -3,9 +3,9 @@
 @theme {
   --color-background: #859271;
   --color-primary: #9dac85;
-  --color-secondary: #bfc9b0;
-  --color-active: #737e61;
-  --color-light: #d3dac8;
+  --color-body: #bfc9b0;
+  /* --color-active: #737e61; */
+  --color-surface: #d3dac8;
   --color-black: #11130f;
   --shadow-inset-black: inset 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
@@ -22,7 +22,7 @@ body {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   font-weight: bold;
   background-color: #d3dac8;
@@ -34,12 +34,14 @@ body {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   font-weight: bold;
-  background-color: #9dac85;
+  background-color: var(--color-primary);
   color: #11130f;
   font-weight: 500;
+  text-align: center;
+  
 }
 body {
   margin: 12px;

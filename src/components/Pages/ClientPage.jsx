@@ -8,7 +8,7 @@ function ClientPage({ onAddClient, clients = [], onSelectClient }) {
   const [modalisVisible, setModalVisible] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
-  const STATUSES = ["all", "new", "active", "one-time", "inactive"];
+  const STATUSES = ["all", "new", "active", "inactive", "one-time"];
 
   const filteredClients =
     selectedStatus === "all"
@@ -44,34 +44,38 @@ function ClientPage({ onAddClient, clients = [], onSelectClient }) {
   return (
     <>
       <div className="flex flex-col gap-3">
-        <div className="flex justify-between">
-          <span></span>
+        <div className="flex flex-col justify-between gap-4 sm:flex-row">
+          {/* SEARCH BAR */}
+          <input
+            type="text"
+            placeholder="Search a client..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="bg-surface w-full flex-1 rounded-xl border border-white p-2"
+          />
 
           <button
-            className="button-secondary text-center"
+            className="button-secondary"
             onClick={() => setModalVisible(true)}
           >
-           + Add New Client
+            + Add New Client
           </button>
         </div>
-        {/* SEARCH BAR */}
-        <input
-          type="text"
-          placeholder="Search a client..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="bg-secondary w-full rounded-xl border border-white p-2"
-        />
 
         {/* STATUS FILTERS */}
-        <div className="flex w-full justify-between">
+        <div className="[&::-webkit-scrollbar-thumb]:bg-body flex gap-1.5 overflow-x-scroll pb-2 [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent">
           {STATUSES.map((status) => (
             <p
               key={status}
-              className={`cursor-pointer rounded-md px-1.5 capitalize lg:px-10 lg:text-lg ${selectedStatus === status ? "bg-secondary font-semibold " : " bg-primary"}`}
+              className={`flex-1 cursor-pointer rounded-md p-1.5 text-center text-sm whitespace-nowrap capitalize lg:text-lg ${selectedStatus === status ? "bg-surface font-semibold " : " bg-primary"}`}
               onClick={() => setSelectedStatus(status)}
             >
-              {status}
+              {status} (
+              {
+                clients.filter((c) => status === "all" || c.status === status)
+                  .length
+              }
+              )
             </p>
           ))}
         </div>
@@ -85,16 +89,16 @@ function ClientPage({ onAddClient, clients = [], onSelectClient }) {
 
       {clients.length > 0 && (
         <div>
-          <div className="my-2 flex w-full justify-between rounded-lg border border-white bg-[#D3DAC8]">
-            <h2 className="text-md w-1/2 text-center font-semibold lg:text-lg">
-              Total Clients <br /> {filteredClients.length}
+          <div className="bg-surface mb-2 flex w-full items-center justify-between rounded-lg border border-white p-3">
+            <h2 className="font-semibold lg:text-lg">
+              Total Clients: {filteredClients.length}
             </h2>
-            <h2 className="text-md w-1/2 text-center font-semibold lg:text-lg">
-              Total Income <br /> {totalIncome}€
+            <h2 className="font-semibold lg:text-lg">
+              Total Income: {totalIncome}€
             </h2>
           </div>
 
-          <ul className="flex flex-col gap-2 rounded-lg border-2 border-white bg-[#D3DAC8] p-4 drop-shadow-lg">
+          <ul className="bg-surface flex flex-col gap-2 rounded-lg border-2 border-white p-4 drop-shadow-lg">
             {searchedClients.map((client) => (
               <ClientCard
                 key={client.id}

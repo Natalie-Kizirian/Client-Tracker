@@ -75,7 +75,7 @@ function App() {
 
   return (
     <>
-      <div className="flex flex-col gap-10 md:m-auto md:w-1/2 text-black">
+      <div className="flex flex-col gap-6 md:m-auto md:w-1/2 text-black">
         <h1 className="text-center">Client Tracker</h1>
         {!selectedClient && (
           <ClientPage
