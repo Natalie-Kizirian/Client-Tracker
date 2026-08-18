@@ -74,7 +74,7 @@ function HistoryPage({
             ) : (
               <div className="flex flex-col gap-3">
                 <div className="flex justify-between">
-                  <p>Total Income: {totalIncome}</p>
+                  <p className="font-semibold">Total Income: {totalIncome}€</p>
                   <h3 className="capitalize">{client.status} Client</h3>
                 </div>
 

@@ -35,7 +35,7 @@ function NewClientForm({
           Client Information
         </label>
         <input
-          className="w-full rounded-md border bg-white p-1"
+          className="bg-surface rounded-md p-2 shadow-[inset_0_2px_6px_rgba(0,0,0,0.4)] focus:outline-none"
           type="text"
           placeholder="Add Client Name"
           onChange={(e) => setEnteredName(e.target.value)}
@@ -45,7 +45,7 @@ function NewClientForm({
 
         <div className="flex flex-col justify-between gap-3 md:gap-4">
           <select
-            className="bg-surface w-full rounded-lg border border-white p-2"
+            className="bg-surface w-full rounded-lg border focus:outline-none border-white p-2"
             name="status"
             value={enteredStatus}
             onChange={(e) => setEnteredStatus(e.target.value)}

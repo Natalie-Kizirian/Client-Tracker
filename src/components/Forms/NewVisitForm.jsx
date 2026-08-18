@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+const inputStyles =
+  "rounded-md bg-surface p-1 shadow-[inset_0_2px_6px_rgba(0,0,0,0.4)] focus:outline-none";
 function NewVisitForm({
   onAddVisit,
   closeModal,
@@ -39,13 +40,16 @@ function NewVisitForm({
   }
   return (
     <>
+      <h2 className="text-center text-lg font-semibold">
+        Add a new Appointment
+      </h2>
       <form
         className="flex w-full flex-col justify-evenly md:m-auto"
         onSubmit={submitHandler}
       >
         <label htmlFor="date">Date</label>
         <input
-          className="w-full rounded-md bg-[#D3DAC8] p-1"
+          className="bg-surface w-full rounded-md p-1 focus:outline-none"
           type="date"
           name=""
           id="date"
@@ -56,7 +60,8 @@ function NewVisitForm({
           Service
         </label>
         <input
-          className="rounded-md bg-[#D3DAC8] p-1"
+          required
+          className={inputStyles}
           type="text"
           name=""
           id="service"
@@ -67,7 +72,7 @@ function NewVisitForm({
           Price
         </label>
         <input
-          className="rounded-md bg-[#D3DAC8] p-1"
+          className={inputStyles}
           type="number"
           name=""
           id="price"
@@ -78,7 +83,7 @@ function NewVisitForm({
           Tips
         </label>
         <input
-          className="rounded-md bg-[#D3DAC8] p-1"
+          className={inputStyles}
           type="number"
           name=""
           id="tips"
@@ -88,7 +93,7 @@ function NewVisitForm({
         <p className="mt-2 flex flex-col">
           <label> Payment Method</label>
           <select
-            className="rounded-md bg-[#D3DAC8] p-1"
+            className="bg-surface rounded-md p-1 focus:outline-none"
             onChange={(e) => setEnteredPayment(e.target.value)}
           >
             <option value="Cash">Cash</option>
@@ -96,7 +101,11 @@ function NewVisitForm({
           </select>
         </p>
         <div className="mt-5 flex w-full justify-end gap-4">
-          <button type="button" onClick={closeModal} className="button-secondary">
+          <button
+            type="button"
+            onClick={closeModal}
+            className="button-secondary"
+          >
             Cancel
           </button>
           <button className="button-primary" type="submit">
