@@ -16,6 +16,7 @@ function VisitCard({ visit, onDeleteVisit, onEditVisit }) {
     }
   };
   const tips = visit.tips || 0;
+  const price = visit.price || 0;
   const infoStyle = "bg-background rounded-md px-1.5 py-1 w-full text-center ";
   const formattedDate = new Date(visit.date).toLocaleDateString("el-GR", {
     day: "2-digit",
@@ -42,7 +43,7 @@ function VisitCard({ visit, onDeleteVisit, onEditVisit }) {
 
           <div className="border-secondary wrap flex justify-between gap-2 border-b pb-2">
             <p className={infoStyle}>{formattedDate}</p>
-            <p className={infoStyle}>{visit.price}€</p>
+            <p className={infoStyle}>{price}€</p>
             <p className={infoStyle}>Tips:{tips}€</p>
             <p className={infoStyle}>{visit.payment}</p>
           </div>

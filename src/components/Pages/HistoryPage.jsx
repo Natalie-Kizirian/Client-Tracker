@@ -131,7 +131,7 @@ function HistoryPage({
             />
           )}
           {client.visits.length === 0 && (
-            <div className="bg-body cursor-pointer rounded-md border px-2 text-center drop-shadow-lg lg:p-3">
+            <div className="bg-body cursor-pointer rounded-md  px-2 text-center drop-shadow-lg lg:p-3">
               <h3>No appointments yet.</h3> <br />
               <p>
                 Add an appointment to start tracking {client.name}'s visits.
