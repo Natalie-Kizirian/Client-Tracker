@@ -4,7 +4,8 @@ import Modal from "../Modal";
 import { useState } from "react";
 import { FaArrowUp } from "react-icons/fa";
 import { getClientTotalIncome } from "../../utils";
-
+import classes from "../Pages/clientPage.module.css";
+import ContainerBackground from "../UI/container-bg";
 function ClientPage({ onAddClient, clients = [], onSelectClient }) {
   const [modalisVisible, setModalVisible] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState("all");
@@ -40,64 +41,50 @@ function ClientPage({ onAddClient, clients = [], onSelectClient }) {
     });
   };
   return (
-    <>
-      <div className="flex flex-col gap-3">
-        <div className="flex flex-col justify-between gap-4 sm:flex-row">
-          {/* SEARCH BAR */}
-          <input
-            type="text"
-            placeholder="Search a client..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="bg-surface w-full flex-1 rounded-xl border border-white p-2"
-          />
+    <div className="flex flex-col gap-4">
+      <div className="flex w-full flex-col gap-2">
+        {/* ADD BUTTON */}
+        <button
+          className="secondary-button-md"
+          onClick={() => setModalVisible(true)}
+        >
+          + Add New Client
+        </button>
 
-          <button
-            className="button-secondary"
-            onClick={() => setModalVisible(true)}
-          >
-            + Add New Client
-          </button>
-        </div>
+        {/* SEARCH BAR */}
+        <input
+          type="text"
+          placeholder="Search a client..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className={classes.search}
+        />
 
         {/* STATUS FILTERS */}
         <div className="[&::-webkit-scrollbar-thumb]:bg-body flex gap-1.5 overflow-x-scroll pb-2 [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent">
           {STATUSES.map((status) => (
-            <p
+            <button
               key={status}
-              className={`border-gold flex-1 cursor-pointer rounded-md border p-1.5 text-center text-sm whitespace-nowrap capitalize lg:text-lg ${selectedStatus === status ? "bg-surface font-semibold " : " bg-primary"}`}
+              className={`${classes.status} ${selectedStatus === status ? "bg-secondary " : " bg-surface"}`}
               onClick={() => setSelectedStatus(status)}
             >
-              {status} (
+              {status}
+              {/* (
               {
                 clients.filter((c) => status === "all" || c.status === status)
                   .length
               }
-              )
-            </p>
+              ) */}
+            </button>
           ))}
         </div>
+        <h3 className={classes.total}>Total Income: {totalIncome}€</h3>
       </div>
 
-      {modalisVisible && (
-        <Modal onCloseModal={hideModal}>
-          <NewClientForm closeModal={hideModal} onAddClient={onAddClient} />
-        </Modal>
-      )}
-
-      {/* Total Income and Cards */}
+      {/* Client Cards*/}
       {clients.length > 0 && (
         <div className="flex flex-col gap-2">
-          <div className="bg-surface rounded-lg border border-white p-2">
-            {/* <h2 className="font-semibold lg:text-lg">
-              Total Clients: {filteredClients.length}
-            </h2> */}
-            <h2 className="font-semibold lg:text-lg">
-              Total Income: {totalIncome}€
-            </h2>
-          </div>
-
-          <ul className="bg-surface flex flex-col gap-2 rounded-lg border-2 border-white p-4 drop-shadow-lg">
+          <ContainerBackground>
             {searchedClients.map((client) => (
               <ClientCard
                 key={client.id}
@@ -108,10 +95,11 @@ function ClientPage({ onAddClient, clients = [], onSelectClient }) {
             {filteredClients.length === 0 && (
               <h3 className="text-center">No clients here 👀</h3>
             )}
-          </ul>
+          </ContainerBackground>
         </div>
       )}
 
+      {/* Empty state */}
       {clients.length === 0 && (
         <div className="border-gold bg-body cursor-pointer rounded-md border px-2 text-center drop-shadow-lg lg:p-3">
           <h3>No clients yet.</h3> <br />
@@ -126,7 +114,13 @@ function ClientPage({ onAddClient, clients = [], onSelectClient }) {
       >
         <FaArrowUp />
       </button>
-    </>
+
+      {modalisVisible && (
+        <Modal onCloseModal={hideModal}>
+          <NewClientForm closeModal={hideModal} onAddClient={onAddClient} />
+        </Modal>
+      )}
+    </div>
   );
 }
 export default ClientPage;

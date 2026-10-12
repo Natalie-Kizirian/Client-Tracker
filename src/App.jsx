@@ -75,8 +75,8 @@ function App() {
 
   return (
     <>
-      <div className="flex flex-col gap-6 md:m-auto md:w-1/2 text-black">
-        <h1 className="text-center">Client Tracker</h1>
+      <div className="flex min-h-screen flex-col p-3 md:m-auto md:w-1/2">
+        <h1 className="p-11 text-center uppercase">Client Tracker</h1>
         {!selectedClient && (
           <ClientPage
             onAddClient={addClientHandler}

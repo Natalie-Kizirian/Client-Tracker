@@ -1,6 +1,6 @@
 import { useState } from "react";
 const inputStyles =
-  "rounded-md bg-surface p-1 shadow-[inset_0_2px_6px_rgba(0,0,0,0.4)] focus:outline-none";
+  "rounded-md bg-surface p-2 shadow-inset-black focus:outline-none";
 function NewVisitForm({
   onAddVisit,
   closeModal,
@@ -40,75 +40,85 @@ function NewVisitForm({
   }
   return (
     <>
-      <h2 className="text-center text-lg font-semibold">
+      <h2 className=" text-lg font-semibold">
         Add a new Appointment
       </h2>
       <form
-        className="flex w-full flex-col justify-evenly md:m-auto"
+        className="flex w-full flex-col gap-2 md:m-auto"
         onSubmit={submitHandler}
       >
-        <label htmlFor="date">Date</label>
-        <input
-          className="bg-surface w-full rounded-md p-1 focus:outline-none"
-          type="date"
-          name=""
-          id="date"
-          value={enteredDate}
-          onChange={(e) => setEnteredDate(e.target.value)}
-        />
-        <label className="mt-2" htmlFor="service">
-          Service
-        </label>
-        <input
-          required
-          className={inputStyles}
-          type="text"
-          name=""
-          id="service"
-          value={enteredService}
-          onChange={(e) => setEnteredService(e.target.value)}
-        />
-        <label className="mt-2" htmlFor="price">
-          Price
-        </label>
-        <input
-          className={inputStyles}
-          type="number"
-          name=""
-          id="price"
-          value={enteredPrice}
-          onChange={(e) => setEnteredPrice(e.target.value)}
-        />
-        <label className="mt-2" htmlFor="tips">
-          Tips
-        </label>
-        <input
-          className={inputStyles}
-          type="number"
-          name=""
-          id="tips"
-          value={enteredTips}
-          onChange={(e) => setEnteredTips(e.target.value)}
-        />
-        <p className="mt-2 flex flex-col">
+        {/* Date */}
+        <div>
+          <label htmlFor="date">Date</label>
+          <input
+            className="bg-surface w-full rounded-md p-2 focus:outline-none"
+            type="date"
+            name=""
+            id="date"
+            value={enteredDate}
+            onChange={(e) => setEnteredDate(e.target.value)}
+          />
+        </div>
+        <div className="flex flex-col gap-1">
+          <label className="mt-2" htmlFor="service">
+            Service
+          </label>
+          <input
+            required
+            className={inputStyles}
+            type="text"
+            name=""
+            id="service"
+            value={enteredService}
+            onChange={(e) => setEnteredService(e.target.value)}
+          />
+        </div>
+        <div className="flex flex-col gap-1">
+          <label className="" htmlFor="price">
+            Price
+          </label>
+          <input
+            className={inputStyles}
+            type="number"
+            name=""
+            id="price"
+            value={enteredPrice}
+            onChange={(e) => setEnteredPrice(e.target.value)}
+          />
+        </div>
+        <div className="flex flex-col gap-1">
+          <label className="" htmlFor="tips">
+            Tips
+          </label>
+          <input
+            className={inputStyles}
+            type="number"
+            name=""
+            id="tips"
+            value={enteredTips}
+            onChange={(e) => setEnteredTips(e.target.value)}
+          />
+        </div>
+
+        <div className="flex flex-col gap-1">
           <label> Payment Method</label>
           <select
-            className="bg-surface rounded-md p-1 focus:outline-none"
+            className="bg-background rounded-md p-2 focus:outline-none"
             onChange={(e) => setEnteredPayment(e.target.value)}
           >
             <option value="Cash">Cash</option>
             <option value="Card">Card</option>
           </select>
-        </p>
-        <div className="mt-5 flex w-full justify-end gap-4">
+        </div>
+        <div className="flex w-full justify-between gap-5">
           <button
             type="button"
             onClick={closeModal}
-            className="button-secondary"
+            className="stroke-button-md w-full"
           >
             Cancel
           </button>
-          <button className="button-primary" type="submit">
+          <button className="primary-button-md w-full" type="submit">
             {defaultData ? "Save" : "Add"}
           </button>
         </div>

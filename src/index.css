@@ -1,48 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --color-background: #859271;
-  --color-primary: #9dac85;
+  /* --color-background: #ebe8e5;
+  --color-primary: #7c906f;
+  --color-black: #141712;
   --color-body: #bfc9b0;
   --color-muted: #737e61;
   --color-surface: #d3dac8;
   --color-gold: #b99a52;
-  --color-black: #11130f;
-  --shadow-inset-black: inset 0px 4px 8px rgba(0, 0, 0, 0.3);
+  --shadow-inset-black: inset 0px 4px 4px rgba(0, 0, 0, 0.2); */
+  --color-background: #ebe8e5;
+  --color-primary: #7c906f;
+  --color-primary-active: #899b7d;
+  --color-secondary: #b3bfab;
+  --color-surface: #d7ded3;
+  --color-white: #f2f4f1;
+  --color-black: #141712;
+  --shadow-inset: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+  --shadow-navbar: 0 -4px 10px rgba(0, 0, 0, 0.15);
 }
 
-h1 {
-  font-size: 1.8rem;
-  font-weight: bold;
-}
 body {
-  background-color: #859271;
+  background: var(--color-background);
+
+  font-family:"DM Sans",sans-serif;
 }
-.button-secondary {
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  font-weight: bold;
-  background-color: #d3dac8;
-  color: #272b21;
-  font-weight: 500;
+* {
+  box-sizing: border-box;
 }
-.button-primary {
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  font-weight: bold;
+
+html {
+  font-family: "Quicksand", sans-serif;
+}
+
+.primary-button-sm {
   background-color: var(--color-primary);
-  color: #11130f;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  color: var(--color-black);
   font-weight: 500;
+  font-size: 12px;
   text-align: center;
 }
-body {
-  margin: 12px;
+
+.primary-button-md {
+  background-color: var(--color-primary);
+  border-radius: 6px;
+  padding: 10px 12px;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  color: var(--color-black);
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+}
+.primary-button-md:hover,
+.primary-button-sm:hover,
+.primary-button-md:active,
+.primary-button-sm:active {
+  background-color: var(--color-primary-active);
+  box-shadow: var(--shadow-md);
+}
+
+.secondary-button-sm {
+  background-color: var(--color-secondary);
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  color: var(--color-black);
+  font-weight: 500;
+  font-size: 12px;
+  text-align: center;
+}
+.secondary-button-sm:hover,
+.secondary-button-md:hover,
+.secondary-button-sm:active,
+.secondary-button-md:active {
+  background-color: #b8c3b1;
+  box-shadow: var(--shadow-md);
+}
+
+.secondary-button-md {
+  background-color: var(--color-secondary);
+  border-radius: 6px;
+  padding: 10px 12px;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  color: var(--color-black);
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Stroke Button */
+
+.stroke-button-sm {
+  border: solid 1px var(--color-surface);
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  color: var(--color-black);
+  font-weight: 500;
+  font-size: 12px;
+  text-align: center;
+}
+.stroke-button-sm:hover,
+.stroke-button-md:hover,
+.stroke-button-sm:active,
+.stroke-button-md:active {
+  box-shadow: var(--shadow-md);
+}
+
+.stroke-button-md {
+  border: solid 1px var(--color-surface);
+  border-radius: 6px;
+  padding: 10px 12px;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  color: var(--color-black);
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+}
+input,
+textarea {
+  background-color: var(--color-background);
+  box-shadow: var(--shadow-inset);
+  padding: 8px;
+  border-radius: 8px;
+  width: 100%;
+  outline: none;
+  border: solid thin var(--color-background);
+}
+
+
+h1{
+  font-size: 24px;
+}
+h2 {
+  font-size: 20px;
+  font-weight: 600;
 }

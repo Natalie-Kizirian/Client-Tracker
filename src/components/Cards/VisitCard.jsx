@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useSwipeable } from "react-swipeable";
-import NewVisitForm from "../Forms/NewVisitForm";
 function VisitCard({ visit, onDeleteVisit, onEditVisit }) {
   const [isRevealed, setIsRevealed] = useState(false);
   const handlers = useSwipeable({
@@ -16,6 +15,13 @@ function VisitCard({ visit, onDeleteVisit, onEditVisit }) {
       onEditVisit(visit);
     }
   };
+  const tips = visit.tips || 0;
+  const infoStyle = "bg-background rounded-md px-1.5 py-1 w-full text-center ";
+  const formattedDate = new Date(visit.date).toLocaleDateString("el-GR", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "2-digit",
+  });
 
   return (
     <div className="relative overflow-hidden rounded-xl">
@@ -29,43 +35,31 @@ function VisitCard({ visit, onDeleteVisit, onEditVisit }) {
         {...handlers}
         onClick={handleCardClick}
         // onClick={() => onEditVisit(visit)}
-        className={`flex cursor-pointer flex-col gap-1 rounded-xl border-2 border-gold bg-[#BFC9B0] p-1 drop-shadow-md md:p-4 ${
-          isRevealed ? "-translate-x-20 " : "translate-x-0 "
-        }`}
+        className={` ${isRevealed ? "-translate-x-20 " : "translate-x-0 "}`}
       >
-        <div className="flex w-full justify-between">
-          <p className="w-full text-lg font-medium">{visit.service}</p>
-          <div className="flex gap-4">
-            {/* <button  className="cursor-pointer">
-            ✏️
-          </button> */}
+        <div className="bg-surface border-background flex cursor-pointer flex-col gap-1 rounded-xl border p-2 shadow-sm md:p-4">
+          <p className="font-semibold">{visit.service}</p>
+
+          <div className="border-secondary wrap flex justify-between gap-2 border-b pb-2">
+            <p className={infoStyle}>{formattedDate}</p>
+            <p className={infoStyle}>{visit.price}€</p>
+            <p className={infoStyle}>Tips:{tips}€</p>
+            <p className={infoStyle}>{visit.payment}</p>
           </div>
-        </div>
-        <div className="flex w-full items-start justify-between border-b-2 pb-2 text-center lg:gap-5 lg:text-lg">
-          <p className="rounded-md bg-[#CAD2BD] p-1">
-            {new Date(visit.date).toLocaleDateString("el-GR")}
-          </p>
-          <p className="rounded-md bg-[#CAD2BD] p-1 lg:px-5">
-            Price {visit.price}€
-          </p>
-          <p className="rounded-md bg-[#CAD2BD] p-1 lg:px-5">
-            Tips {visit.tips}€
-          </p>
-          <p className="rounded-md bg-[#CAD2BD] p-1 lg:px-5">{visit.payment}</p>
-        </div>
-        <div className="flex items-center">
-          <p className="text-l w-full font-bold md:text-xl">
-            Total {visit.total}€
-          </p>
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onDeleteVisit(visit);
-            }}
-            className="hidden w-1/4 cursor-pointer rounded-md border border-white p-2 text-center font-semibold xl:inline"
-          >
-            🗑️ Delete
-          </button>
+
+          <div className="flex items-center justify-between">
+            <p className="font-semibold">Total {visit.total}€</p>
+            {/* Delete desktop */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onDeleteVisit(visit);
+              }}
+              className="text-primary hidden cursor-pointer p-1 lg:flex"
+            >
+              Delete
+            </button>
+          </div>
         </div>
       </div>
     </div>

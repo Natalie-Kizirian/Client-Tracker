@@ -27,15 +27,12 @@ function NewClientForm({
   }
   return (
     <>
-      <form
-        className="flex w-full flex-col gap-4 rounded-md"
-        onSubmit={submitHandler}
-      >
-        <label htmlFor="name" className="text-xl font-semibold text-black">
+      <form className="flex w-full flex-col gap-4" onSubmit={submitHandler}>
+        <label htmlFor="name" className="text-lg font-semibold text-black">
           Client Information
         </label>
         <input
-          className="bg-surface rounded-md p-2 shadow-[inset_0_2px_6px_rgba(0,0,0,0.4)] focus:outline-none"
+          className=" shadow-inset-black rounded-md p-2 focus:outline-none"
           type="text"
           placeholder="Add Client Name"
           onChange={(e) => setEnteredName(e.target.value)}
@@ -45,7 +42,7 @@ function NewClientForm({
 
         <div className="flex flex-col justify-between gap-3 md:gap-4">
           <select
-            className="bg-surface w-full rounded-lg border focus:outline-none border-white p-2"
+            className="bg-background w-full rounded-lg border border-white p-2 text-sm focus:outline-none"
             name="status"
             value={enteredStatus}
             onChange={(e) => setEnteredStatus(e.target.value)}
@@ -77,15 +74,15 @@ function NewClientForm({
           )}
         </div>
 
-        <div className="mt-8 flex justify-end gap-2">
+        <div className="flex w-full justify-between gap-5">
           <button
             type="button"
             onClick={closeModal}
-            className="button-secondary"
+            className="stroke-button-md w-full"
           >
             Cancel
           </button>
-          <button className="button-primary" type="submit">
+          <button className="primary-button-md w-full" type="submit">
             {defaultData ? "Save" : "Add"}
           </button>
         </div>
