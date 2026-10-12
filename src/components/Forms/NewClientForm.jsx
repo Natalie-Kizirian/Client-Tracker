@@ -22,17 +22,15 @@ function NewClientForm({
       note: enteredNote,
     };
     onAddClient(clientData);
-    closeModal();
-    console.log(clientData);
-  }
+    closeModal();  }
   return (
     <>
       <form className="flex w-full flex-col gap-4" onSubmit={submitHandler}>
         <label htmlFor="name" className="text-lg font-semibold text-black">
-          Client Information
+          Add a new client
         </label>
         <input
-          className=" shadow-inset-black rounded-md p-2 focus:outline-none"
+          className="shadow-inset-black rounded-md p-2 focus:outline-none"
           type="text"
           placeholder="Add Client Name"
           onChange={(e) => setEnteredName(e.target.value)}
